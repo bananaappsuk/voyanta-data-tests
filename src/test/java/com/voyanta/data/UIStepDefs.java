@@ -59,7 +59,7 @@ public class UIStepDefs {
         UploadPage uploadPage = new UploadPage();
         PageFactory.initElements(driver, uploadPage);
         driver.get(uploadPage.getURL());
-        uploadPage.selectFiles("C:\\\\Users\\\\Sriram.Angajala\\\\Box Sync\\\\QA\\\\Automation Test\\\\DataSubmission\\\\Test Data\\\\NewData\\\\"+fileName);
+        uploadPage.selectFiles(PropertiesLoader.getProperty("windows_boxFolder")+PropertiesLoader.getProperty("windows_testDataFolder")+fileName);
 
         uploadPage.save();
 

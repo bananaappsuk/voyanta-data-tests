@@ -46,6 +46,7 @@ public class ValidationUtils {
     public static void compareColumnHeaders(List<VHashMap> excelSheetData, List<VHashMap> dataBaseData) {
 
 // int i = 0;
+        int failcounter=0;
         int totalCount = excelSheetData.size()-1;
         for(int i=0;i<=totalCount;i++)
         {
@@ -90,8 +91,11 @@ public class ValidationUtils {
             if(failedcounter==0)
                 LOGGER.info("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
             else
+            {
                 LOGGER.info("FAILED TESTS : "+failedcounter+" record:"+(i+1));
-//        Assert.assertEquals("All the data should match",0,failedcounter);
+                failcounter++;
+            }
+        Assert.assertEquals("Data validation failed. Please see the details above",0,failedcounter);
 //        Set<String> set2=excelSheetData.get(i).entrySet();
 //        Iterator<String> iter2=set2.iterator();
 //

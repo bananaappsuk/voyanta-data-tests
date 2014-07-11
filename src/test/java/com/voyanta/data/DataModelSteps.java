@@ -5,10 +5,12 @@ import com.voyanta.data.datamodel.DatabaseView;
 import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
 import com.voyanta.data.utils.utils.FileSearch;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+
 
 import java.io.File;
 import java.util.List;
@@ -17,8 +19,8 @@ import java.util.List;
  * Created by sriramangajala on 08/07/2014.
  */
 public class DataModelSteps {
-    String boxFolder = PropertiesLoader.getProperty("boxFolder");
-    String testDataFolder = PropertiesLoader.getProperty("testDataFolder");
+    String boxFolder ;
+    String testDataFolder ;
     String dataSheet;
     List<VHashMap> dataBaseData;
     List<VHashMap> excelSheetData;
@@ -26,8 +28,29 @@ public class DataModelSteps {
 
     File excelFolder;
 
-    DataSheetsView dataSheetsView = new DataSheetsView();
-    DatabaseView databaseView = new DatabaseView();
+    DataSheetsView dataSheetsView ;
+
+    DatabaseView databaseView ;
+
+    @Before
+    public void before()
+    {
+        if(System.getProperty("os.name").toLowerCase().contains("mac"))
+        {
+            boxFolder = PropertiesLoader.getProperty("mac_boxFolder");
+            testDataFolder = PropertiesLoader.getProperty("mac_testDataFolder");
+        }
+        else
+        {
+            boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
+            testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
+        }
+        dataSheet=null;
+        dataBaseData=null;
+        excelSheetData=null;
+        dataSheetsView = new DataSheetsView();
+        databaseView = new DatabaseView();
+    }
 
     @Given("^The DataSheet exits in the QA Box with name '(.*)'$")
     public void the_DataSheet_exits_in_the_QA_Box_with_name(String datasheet) throws Throwable {
@@ -55,15 +78,8 @@ public class DataModelSteps {
     public void data_in_all_the_cells_should_match() throws Throwable {
         excelSheetData = ValidationUtils.lowerCaseColumnsAndRemoveSpaces(excelSheetData);
         dataBaseData = ValidationUtils.lowerCaseColumnsAndRemoveSpaces(dataBaseData);
-//        excelSheetData = ValidationUtils.sortColumns(excelSheetData);
-//        dataBaseData = ValidationUtils.sortColumns(dataBaseData);
-//
+
         ValidationUtils.compareColumnHeaders(excelSheetData,dataBaseData);
-//        ValidationUtils.compareRowsNumbers(excelSheetData, dataBaseData);
-//        ValidationUtils.compareData(excelSheetData, dataBaseData);
-//        Set<String> mis = Sets.difference(excelSheetData.get(0).entrySet(), dataBaseData.get(0).entrySet());
-//        Set<String> com = Sets.union(excelSheetData.get(0).entrySet(),dataBaseData.get(0).entrySet());
-//        System.out.println(mis.size());
-//        System.out.println(com.size());
+
     }
 }

@@ -14,6 +14,6 @@ Feature: Data Submission Test for validating the Data at cell level
     Examples:
 
     |FileName|QueryName|
-#    |Building.xlsx|Building.sql|
+    |Building.xlsx|Building.sql|
     |    Lease (v5.1).xlsx         |Lease.sql   |
 
