@@ -5,6 +5,7 @@ import com.mysql.jdbc.Statement;
 import org.apache.log4j.Logger;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
+import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -65,7 +66,7 @@ public class DBUtils {
 //                hashMap.put(md.getColumnName(i), String.valueOf(rs.getObject(i)).replace(".00000",""));
 //                hashMap.put(md.getColumnName(i),hashMap.get(md.getColumnName(i)).toString());
 
-                LOGGER.debug("Key = " + md.getColumnName(i) + " Value = " + rs.getObject(i));
+                LOGGER.info("Key = " + md.getColumnName(i) + " Value = " + rs.getObject(i));
 
             }
             row.add(hashMap);
@@ -86,5 +87,25 @@ public class DBUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String loadSQLFile(String filePath)
+    {
+        String scriptFileName = (filePath);
+        File script = new File(scriptFileName);
+        BufferedReader reader = null;
+        String line,SQL="";
+        try {
+            reader = new BufferedReader(new FileReader(script));
+
+               while ((line = reader.readLine()) != null)
+                {
+                    SQL = SQL+line;
+                }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return SQL;
     }
 }

@@ -2,10 +2,12 @@ package com.voyanta.data.utils;
 
 import com.sun.tools.javac.util.Convert;
 import com.voyanta.data.utils.utils.StringConstants;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ import java.util.Set;
  */
 public class VHashMap extends HashMap {
 
-
+    static Logger LOGGER = Logger.getLogger(VHashMap.class);
 
     public void equals(VHashMap hashMap)
     {
@@ -111,5 +113,20 @@ public class VHashMap extends HashMap {
 
     private String convertToString(Object o) {
         return String.valueOf(o);
+    }
+
+    public static List<VHashMap> addAdditionalColumnFrom(List<VHashMap> vHashMapList, String additionalColumn, String existingColumn) {
+        int totalCount = vHashMapList.size()-1;
+        LOGGER.debug("Checking if the column "+existingColumn+" exists in the given data");
+        if(!vHashMapList.get(0).containsKey(existingColumn))
+        {
+            throw new RuntimeException("Given column "+existingColumn+" doesn't exist in the given data");
+        }
+
+        for(int i=0;i<=totalCount;i++)
+        {
+            vHashMapList.get(i).put(additionalColumn,vHashMapList.get(i).get(existingColumn));
+        }
+        return vHashMapList;
     }
 }

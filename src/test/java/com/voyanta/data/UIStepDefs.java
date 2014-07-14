@@ -41,6 +41,7 @@ public class UIStepDefs {
 ////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
         Capabilities capabilities = DesiredCapabilities.firefox();
         System.out.println("Server URL is " + PropertiesLoader.getProperty("server"));
+
         driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
 
         URL = PropertiesLoader.getProperty("ui_url");
@@ -49,6 +50,7 @@ public class UIStepDefs {
         PageFactory.initElements(driver, signInPage);
         signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));
         System.out.print(System.getProperty("test_phase"));
+
 //        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
 
     }
@@ -68,14 +70,17 @@ public class UIStepDefs {
     }
 
     @When("^it also passed through the Validation and Approval$")
-    public void the_uploaded_file_is() throws Throwable {
+    public void the_uploaded_file_is() throws Throwable
+    {
         DataManager dataManager = new DataManager();
         PageFactory.initElements(driver, dataManager);
 
         dataManager.go_to_History();
-        Assert.assertTrue("Uploading failed as no file present history tab",driver.findElement(By.xpath("//div[@id='list-table-holder']/table/tbody/tr")).getText().contains(fileName));
-        Assert.assertTrue("File found but not the latest one",driver.findElement(By.xpath("//div[@id='list-table-holder']/table/tbody/tr")).getText().contains("secs"));
-        Assert.assertTrue("File uploaded but not Approved",driver.findElement(By.xpath("//div[@id='list-table-holder']/table/tbody/tr")).getText().contains("Approved"));
+        dataManager.setDriver(driver);
+
+        Assert.assertTrue("Uploading failed as no file present in history tab", dataManager.getFirstRowText().contains(fileName));
+        Assert.assertTrue("File found but not the latest one", dataManager.getFirstRowText().contains("secs"));
+        Assert.assertTrue("File uploaded but not Approved", dataManager.getFirstRowText().contains("Approved"));
     }
 
     @After

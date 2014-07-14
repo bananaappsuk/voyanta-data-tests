@@ -1,6 +1,7 @@
 package com.voyanta.data.datamodel;
 
 import com.voyanta.data.datamodel.dbtables.loadDBRecords;
+import com.voyanta.data.utils.DBUtils;
 import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
 
@@ -43,9 +44,21 @@ public class DatabaseView {
     public List<VHashMap> getDataBaseRecordsInStringWithLimit(String sqlFileName,int limit)
     {
         String SQL = getSQL(sqlFileName);
-        SQL = SQL + " LIMIT 0,"+limit;
-        return getDataBaseRecordsWithQuery(SQL);
+        return getSQLDataFromQueryWithLimit(limit, SQL);
 
+    }
+
+    private List<VHashMap> getSQLDataFromQueryWithLimit(int limit, String SQL) {
+        SQL = SQL.replace(";","") + " LIMIT 0,"+limit;
+        return getDataBaseRecordsWithQuery(SQL);
+    }
+
+    public List<VHashMap> getDataBaseRecordsFromFile(String fileName,int limit)
+    {
+        String SQL = DBUtils.loadSQLFile(fileName);
+        if(SQL.trim().equals(""))
+            throw new RuntimeException("File "+fileName+"not found to run the sql query");
+        return getSQLDataFromQueryWithLimit(limit, SQL);
     }
 
 

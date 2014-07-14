@@ -47,7 +47,10 @@ public class ValidationUtils {
 
 // int i = 0;
         int failcounter=0;
+        int failedcounter=0,counter = 0;
         int totalCount = excelSheetData.size()-1;
+
+
         for(int i=0;i<=totalCount;i++)
         {
 // dataBaseData.get(i).humanise()
@@ -58,6 +61,7 @@ public class ValidationUtils {
             {
                 LOGGER.info("Columns size not matching...");
                 LOGGER.info("Excel Sheet columns are "+excelMap.size()+" where as Database columns are "+dbMap.size()+"");
+                failedcounter++;
 
             }
 
@@ -66,9 +70,9 @@ public class ValidationUtils {
 //                LOGGER.info("Columns not matching");
 //            }
 
-            Set<String> set1=dbMap.keySet();
+             Set<String> set1=dbMap.keySet();
              Iterator<String> iter1=set1.iterator();
-             int failedcounter=0,counter = 0;
+
             while (iter1.hasNext())
             {
                 String key = iter1.next();
@@ -95,7 +99,8 @@ public class ValidationUtils {
                 LOGGER.info("FAILED TESTS : "+failedcounter+" record:"+(i+1));
                 failcounter++;
             }
-        Assert.assertEquals("Data validation failed. Please see the details above",0,failedcounter);
+
+
 //        Set<String> set2=excelSheetData.get(i).entrySet();
 //        Iterator<String> iter2=set2.iterator();
 //
@@ -112,6 +117,7 @@ public class ValidationUtils {
 
 
         }
+        Assert.assertEquals("Data validation failed. Please see the details above",0,failedcounter);
     }
 
     public static void compareRowsNumbers(List<VHashMap> excelSheetData, List<VHashMap> dataBaseData) {

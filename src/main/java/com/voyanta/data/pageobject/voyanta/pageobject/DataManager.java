@@ -9,6 +9,8 @@
 
 package com.voyanta.data.pageobject.voyanta.pageobject;
 
+import com.sun.tools.javac.file.JavacFileManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -125,10 +127,13 @@ public class DataManager extends BaseClass{
 	public void go_to_History()
 	{
 		SubmissionHistory.click();
-        VUtils.waitFor(10);
+        VUtils.waitFor(20);
 	}
     public WebElement getTopRow() {
         return TopRow;
     }
 
+    public String getFirstRowText() {
+        return driver.findElement(By.xpath("//div[@id='list-table-holder']/table/tbody/tr")).getText();
+    }
 }

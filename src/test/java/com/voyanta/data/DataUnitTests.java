@@ -3,7 +3,9 @@ package com.voyanta.data;
 import com.voyanta.data.datamodel.DataSheetsView;
 import com.voyanta.data.datamodel.DatabaseView;
 import com.voyanta.data.datamodel.dbtables.loadDBRecords;
+import com.voyanta.data.utils.DBUtils;
 import com.voyanta.data.utils.DataSheetUtil;
+import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
 import com.voyanta.data.utils.utils.FileSearch;
 import org.junit.Assert;
@@ -17,6 +19,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+
 
 /**
  * Created by sriramangajala on 30/06/2014.
@@ -102,6 +105,14 @@ public class DataUnitTests {
     {
         DatabaseView databaseView = new DatabaseView();
         Assert.assertTrue("Checking checkTheHumanise part and handling exceptions",0 < databaseView.getDataBaseRecordsInString("BUILDING.sql").size());
+    }
+
+    @Test
+    public void verifyLoadSQLFile() throws IOException {
+
+        String SQL = DBUtils.loadSQLFile(PropertiesLoader.getProperty("mac_boxFolder")+"/"+PropertiesLoader.getProperty("mac_SQLFolder")+"/Building.sql");
+        loadDBRecords loadDBRecords = new loadDBRecords();
+        Assert.assertTrue("Checking the connectivity to datbase",0 < loadDBRecords.loadRecords(prop.getProperty("dbuserName"), prop.getProperty("dbpassword"), prop.getProperty("url"),SQL).size());
     }
 
 

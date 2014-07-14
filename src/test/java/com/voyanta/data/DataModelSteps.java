@@ -8,6 +8,7 @@ import com.voyanta.data.utils.utils.FileSearch;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
@@ -70,7 +71,8 @@ public class DataModelSteps {
 
     @Then("^data should be saved in database table with query name '(.*)'$")
     public void data_should_be_saved_in_database(String SQLQueryName) throws Throwable {
-         dataBaseData = databaseView.getDataBaseRecordsInStringWithLimit(SQLQueryName,dataSheetsView.getNumberOfRecordsInExcel());
+         String FileName = PropertiesLoader.getProperty("mac_boxFolder")+"/"+PropertiesLoader.getProperty("mac_SQLFolder")+"/"+SQLQueryName;
+         dataBaseData = databaseView.getDataBaseRecordsFromFile(FileName,dataSheetsView.getNumberOfRecordsInExcel());
          Assert.assertTrue("Checking if atleast one row is returned from database",dataBaseData.size()>0);
     }
 
@@ -81,5 +83,11 @@ public class DataModelSteps {
 
         ValidationUtils.compareColumnHeaders(excelSheetData,dataBaseData);
 
+    }
+
+    @When("^an addition column '(.*)' is mapped with '(.*)'$")
+    public void add_additional_column(String additionalColumn,String existingColumn)
+    {
+        excelSheetData = dataSheetsView.copyDataToAdditionalColumn(excelSheetData,additionalColumn,existingColumn);
     }
 }

@@ -52,6 +52,27 @@ public class UploadPage extends BaseClass {
 //			robot.keyRelease(KeyEvent.VK_ENTER);
 //         robot.delay(20000);
 		 selectFileButton.sendKeys(filePath);
+
+         if(saveButton.getAttribute("class").contains("disabled"))
+         {
+             selectFileButton.click();
+//			//driver.findElement(By.cssSelector(".fileinput-button>input")).sendKeys("C:/Test.txt");
+             setClipboardData(filePath);
+             //native key strokes for CTRL, V and ENTER keys
+			Robot robot = new Robot();
+			robot.setAutoWaitForIdle(true);
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.delay(2000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+            robot.delay(2000);
+             selectFileButton.sendKeys(filePath);
+             robot.keyPress(KeyEvent.VK_ENTER);
+             robot.keyRelease(KeyEvent.VK_ENTER);
+         }
          try {
              Thread.sleep(2000);
          } catch (InterruptedException e) {

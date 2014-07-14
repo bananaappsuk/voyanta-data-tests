@@ -1,5 +1,6 @@
 package com.voyanta.data.pageobject.voyanta.pageobject;
 
+import com.voyanta.data.pageobject.voyanta.abstractBaseTest;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;

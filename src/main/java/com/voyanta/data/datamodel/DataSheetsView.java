@@ -1,6 +1,7 @@
 package com.voyanta.data.datamodel;
 
 import com.voyanta.data.datamodel.sheets.AccountSheetData;
+import com.voyanta.data.utils.DataSheetUtil;
 import com.voyanta.data.utils.VHashMap;
 
 import java.util.HashMap;
@@ -34,4 +35,9 @@ public class DataSheetsView {
         return accountSheetData.getSheetDataInHashMap();
     }
 
+    public List<VHashMap> copyDataToAdditionalColumn(List<VHashMap> vHashMapList, String additionalColumn, String existingColumn) {
+
+
+        return DataUtils.addAdditionalColumnFrom(vHashMapList,additionalColumn,existingColumn);
+    }
 }
