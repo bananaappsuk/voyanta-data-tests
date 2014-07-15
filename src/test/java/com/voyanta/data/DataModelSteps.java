@@ -22,6 +22,7 @@ import java.util.List;
 public class DataModelSteps {
     String boxFolder ;
     String testDataFolder ;
+    String SQLFolder;
     String dataSheet;
     List<VHashMap> dataBaseData;
     List<VHashMap> excelSheetData;
@@ -40,11 +41,13 @@ public class DataModelSteps {
         {
             boxFolder = PropertiesLoader.getProperty("mac_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("mac_testDataFolder");
+            SQLFolder = PropertiesLoader.getProperty("mac_testDataFolder");
         }
         else
         {
             boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
+            SQLFolder = PropertiesLoader.getProperty("windows_testDataFolder");
         }
         dataSheet=null;
         dataBaseData=null;

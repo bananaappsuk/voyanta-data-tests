@@ -1,3 +1,4 @@
+
 Feature: Data Submission Test for validating the Data at cell level
 
 
@@ -18,7 +19,7 @@ Feature: Data Submission Test for validating the Data at cell level
     | Lease (v5.1).xlsx | Lease.sql    |
 
 
-  @inprogress
+  @done@ram
   Scenario Outline: Upload data with additional columns and verify the data
 
     Given The DataSheet exits in the QA Box with name '<FileName>'

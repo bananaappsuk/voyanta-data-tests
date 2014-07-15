@@ -8,6 +8,7 @@ import com.voyanta.data.utils.DataSheetUtil;
 import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
 import com.voyanta.data.utils.utils.FileSearch;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -25,6 +26,7 @@ import java.util.Properties;
  * Created by sriramangajala on 30/06/2014.
  */
 public class DataUnitTests {
+    static Logger LOGGER = Logger.getLogger(DBUtils.class);
 
     Properties prop;
     String strDataSheetLocation = "src/main/resources/framework.properties";

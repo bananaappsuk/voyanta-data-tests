@@ -61,7 +61,7 @@ public enum SQLEnum {
             "'AreaType', 'Leased') LEFT JOIN dbolive.Lease MasterLease_Lease ON MasterLease_Lease.LeaseKey = Lease.MasterLeaseKey \n" +
             "LEFT JOIN dbolive.SecurityDeposit SecurityDeposit_Lease ON SecurityDeposit_Lease.LeaseKey = Lease.LeaseKey \n" +
             "LEFT JOIN dbolive.LegalEntity LegalEntity_Tenant ON LegalEntity_Tenant.LegalEntityKey = Tenant_Lease.LegalEntityKey\n" +
-            " WHERE Client_Lease.ClientKey = 767 order by Lease.lastUPdated desc,buildingReference asc","Lease.sql"),
+            " WHERE Client_Lease.ClientKey = 767 order by Lease.lastUpdated desc","Lease.sql"),
 
     BUILDINGS("SELECT \n" +
             "CAST(Building.Active  AS CHAR) AS Active,\n" +

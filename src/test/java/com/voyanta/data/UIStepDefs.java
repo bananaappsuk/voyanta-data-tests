@@ -11,6 +11,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.When;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
@@ -33,6 +34,7 @@ public class UIStepDefs {
     static WebDriver driver;
     static String propertiesFileName = "src/main/resources/";
     String fileName ;
+    static Logger LOGGER = Logger.getLogger(UIStepDefs.class);
     @Before
     public static void driverUp() throws MalformedURLException, InterruptedException {
 
@@ -40,7 +42,7 @@ public class UIStepDefs {
 //        driver=new FirefoxDriver();
 ////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
         Capabilities capabilities = DesiredCapabilities.firefox();
-        System.out.println("Server URL is " + PropertiesLoader.getProperty("server"));
+        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
 
         driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
 
@@ -49,7 +51,7 @@ public class UIStepDefs {
         signInPage=new SignInPageObject();
         PageFactory.initElements(driver, signInPage);
         signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));
-        System.out.print(System.getProperty("test_phase"));
+        LOGGER.info("Test phase:"+System.getProperty("test_phase"));
 
 //        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
 

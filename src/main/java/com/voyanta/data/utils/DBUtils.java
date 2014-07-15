@@ -66,7 +66,7 @@ public class DBUtils {
 //                hashMap.put(md.getColumnName(i), String.valueOf(rs.getObject(i)).replace(".00000",""));
 //                hashMap.put(md.getColumnName(i),hashMap.get(md.getColumnName(i)).toString());
 
-                LOGGER.info("Key = " + md.getColumnName(i) + " Value = " + rs.getObject(i));
+                LOGGER.debug("Key = " + md.getColumnName(i) + " Value = " + rs.getObject(i));
 
             }
             row.add(hashMap);

@@ -1,6 +1,7 @@
 package com.voyanta.data.pageobject.voyanta;
 
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,6 +43,9 @@ public class SignInPageObject {
     @FindBy(how = How.CSS, using = "div.content-wrapper h1.left")
     public WebElement sidebar_label;
 
+    @FindBy(how=How.TAG_NAME,using = "body")
+    public WebElement body;
+
 	//error message locator
 	    private static String ErrorMSGID="form-messenger";
 	    
@@ -54,6 +58,8 @@ public class SignInPageObject {
 		 inputEmail.sendKeys(userName);
 		 inputPassword.sendKeys(passWord);
 		 buttonSignIn.click();
+
+
 		// WebElement myDynamicElement = (new WebDriverWait(driver, 10))
 		//		  .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".tabs.original-tabs>ul>li>a>span")));
 		 try{
@@ -62,6 +68,7 @@ public class SignInPageObject {
 				catch(InterruptedException i){
 					System.out.println("sleep error");
 				}
+         Assert.assertTrue("Login unsuccessful. Please check if application is up and running!",body.getText().contains("Overview"));
 	 }
 	 
 	
