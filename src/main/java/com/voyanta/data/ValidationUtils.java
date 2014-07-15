@@ -49,6 +49,7 @@ public class ValidationUtils {
         int failcounter=0;
         int failedcounter=0,counter = 0;
         int totalCount = excelSheetData.size()-1;
+        int recordFailCounter=0;
 
 
         for(int i=0;i<=totalCount;i++)

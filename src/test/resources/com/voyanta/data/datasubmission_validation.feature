@@ -2,7 +2,7 @@
 Feature: Data Submission Test for validating the Data at cell level
 
 
-  @done
+  @done@ram
   Scenario Outline: Data Submission Test to load the data and check the data uploaded matches the data from Database
 
     Given The DataSheet exits in the QA Box with name '<FileName>'
@@ -15,11 +15,10 @@ Feature: Data Submission Test for validating the Data at cell level
   Examples:
 
     | FileName          | QueryName    |
-    | Building.xlsx     | Building.sql |
-    | Lease (v5.1).xlsx | Lease.sql    |
+    | Building 2.xlsx     | Building.sql |
+#    | Lease (v5.1).xlsx | Lease.sql    |
 
 
-  @done@ram
   Scenario Outline: Upload data with additional columns and verify the data
 
     Given The DataSheet exits in the QA Box with name '<FileName>'
