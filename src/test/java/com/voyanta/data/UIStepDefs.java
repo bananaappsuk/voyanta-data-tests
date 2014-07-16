@@ -38,13 +38,14 @@ public class UIStepDefs {
     @Before
     public static void driverUp() throws MalformedURLException, InterruptedException {
 
-////	   System.setProperty("webdriver.chrome.driver", "/Users/sriramangajala/Documents/Automated-UAT/voyanta-availablity-tests/src/main/resources/chromedriver 5");
-        driver=new FirefoxDriver();
+////	   System.setProperty("webdri
+// ver.chrome.driver", "/Users/sriramangajala/Documents/Automated-UAT/voyanta-availablity-tests/src/main/resources/chromedriver 5");
+//        driver=new FirefoxDriver();
 ////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
-//        Capabilities capabilities = DesiredCapabilities.firefox();
-//        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
-//
-//        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
+        Capabilities capabilities = DesiredCapabilities.firefox();
+        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
+
+        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
 
         URL = PropertiesLoader.getProperty("ui_url");
         driver.get(URL);

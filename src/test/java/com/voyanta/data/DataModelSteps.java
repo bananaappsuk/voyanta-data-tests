@@ -41,7 +41,7 @@ public class DataModelSteps {
         {
             boxFolder = PropertiesLoader.getProperty("mac_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("mac_testDataFolder");
-            SQLFolder = PropertiesLoader.getProperty("mac_testDataFolder");
+            SQLFolder = PropertiesLoader.getProperty("mac_SQLFolder");
         }
         else
         {
@@ -74,7 +74,7 @@ public class DataModelSteps {
 
     @Then("^data should be saved in database table with query name '(.*)'$")
     public void data_should_be_saved_in_database(String SQLQueryName) throws Throwable {
-         String FileName = PropertiesLoader.getProperty("mac_boxFolder")+"/"+PropertiesLoader.getProperty("mac_SQLFolder")+"/"+SQLQueryName;
+         String FileName = boxFolder+"/"+SQLFolder+"/"+SQLQueryName;
          dataBaseData = databaseView.getDataBaseRecordsFromFile(FileName,dataSheetsView.getNumberOfRecordsInExcel());
          Assert.assertTrue("Checking if atleast one row is returned from database",dataBaseData.size()>0);
     }
