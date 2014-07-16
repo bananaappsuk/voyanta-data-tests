@@ -51,6 +51,13 @@ public class ValidationUtils {
         int totalCount = excelSheetData.size()-1;
         int recordFailCounter=0;
 
+        for(Object key :excelSheetData.get(0).keySet())
+        {
+            if(!dataBaseData.get(0).containsKey(key))
+            {
+                LOGGER.info("Missing column in database :"+key.toString());
+            }
+        }
 
         for(int i=0;i<=totalCount;i++)
         {
@@ -65,6 +72,7 @@ public class ValidationUtils {
                 failedcounter++;
 
             }
+
 
 //            if(!excelSheetData.get(i).keySet().equals(dataBaseData.get(i).keySet()))
 //            {

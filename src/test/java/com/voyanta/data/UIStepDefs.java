@@ -49,6 +49,7 @@ public class UIStepDefs {
 
         URL = PropertiesLoader.getProperty("ui_url");
         driver.get(URL);
+        driver.manage().window().maximize();
         signInPage=new SignInPageObject();
         PageFactory.initElements(driver, signInPage);
         signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));

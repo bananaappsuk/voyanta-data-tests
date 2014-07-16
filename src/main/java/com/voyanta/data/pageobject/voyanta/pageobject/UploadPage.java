@@ -52,7 +52,7 @@ public class UploadPage extends BaseClass {
 //			robot.keyRelease(KeyEvent.VK_ENTER);
 //         robot.delay(20000);
 		 selectFileButton.sendKeys(filePath);
-         VUtils.waitFor(20);
+         VUtils.waitFor(5);
 
          if(saveButton.getAttribute("class").contains("disabled"))
          {
