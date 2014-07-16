@@ -45,7 +45,7 @@ public class UIStepDefs {
 //        Capabilities capabilities = DesiredCapabilities.firefox();
 //        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
 
-        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
+//        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
 
         URL = PropertiesLoader.getProperty("ui_url");
         driver.get(URL);
