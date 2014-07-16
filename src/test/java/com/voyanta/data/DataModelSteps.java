@@ -59,15 +59,15 @@ public class DataModelSteps {
     @Given("^The DataSheet exits in the QA Box with name '(.*)'$")
     public void the_DataSheet_exits_in_the_QA_Box_with_name(String datasheet) throws Throwable {
         this.dataSheet = datasheet;
-        LOGGER.info("Searching for the file :"+datasheet+" in folder :"+boxFolder+"/"+testDataFolder);
-        excelFolder = FileSearch.findFile(datasheet, new File(boxFolder+"/"+testDataFolder));
+        LOGGER.info("Searching for the file :"+datasheet+" in folder :"+boxFolder+testDataFolder);
+        excelFolder = FileSearch.findFile(datasheet, new File(boxFolder+testDataFolder));
         Assert.assertTrue(excelFolder.getAbsolutePath().contains(datasheet));
     }
 
     @Given("^the datasheet data is saved$")
     public void the_datasheet_data_is_saved() throws Throwable {
         LOGGER.info("Collecting data from spreadsheet...");
-        excelSheetData = dataSheetsView.getExcelFileDataInHashMap(boxFolder+"/"+testDataFolder+"/",dataSheet,"0");
+        excelSheetData = dataSheetsView.getExcelFileDataInHashMap(boxFolder+testDataFolder,dataSheet,"0");
         Assert.assertTrue("Checking if atleast one row is returned from excel sheet",excelSheetData.size()>0);
     }
 
