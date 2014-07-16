@@ -47,7 +47,7 @@ public class DataModelSteps {
         {
             boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
-            SQLFolder = PropertiesLoader.getProperty("windows_testDataFolder");
+            SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
         }
         dataSheet=null;
         dataBaseData=null;
