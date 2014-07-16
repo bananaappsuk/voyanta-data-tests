@@ -40,10 +40,10 @@ public class UIStepDefs {
 
 ////	   System.setProperty("webdri
 // ver.chrome.driver", "/Users/sriramangajala/Documents/Automated-UAT/voyanta-availablity-tests/src/main/resources/chromedriver 5");
-//        driver=new FirefoxDriver();
-////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
-        Capabilities capabilities = DesiredCapabilities.firefox();
-        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
+        driver=new FirefoxDriver();
+//////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
+//        Capabilities capabilities = DesiredCapabilities.firefox();
+//        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
 
         driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
 
