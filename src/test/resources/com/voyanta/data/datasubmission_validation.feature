@@ -17,7 +17,7 @@ Feature: Data Submission Test for validating the Data at cell level
     | FileName            | QueryName       |
   # | Building 2.xlsx     | Building.sql    |
   # | Lease (v5.1).xlsx   | Lease.sql       |
-    | Development.xlsx     | Development.sql |
+    | Development.xlsx    | Development.sql |
 
 
   #Scenario Outline: Upload data with additional columns and verify the data
