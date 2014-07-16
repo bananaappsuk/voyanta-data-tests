@@ -2,7 +2,9 @@ package com.voyanta.data.utils.utils;
 
 
 
-import org.testng.Assert;
+
+
+import org.junit.Assert;
 
 import java.util.NoSuchElementException;
 

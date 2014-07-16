@@ -1,7 +1,7 @@
 package com.voyanta.data.utils.testReporter;
 
 import org.apache.log4j.Logger;
-import org.testng.Assert;
+import org.junit.Assert;
 
 
 /**
@@ -75,7 +75,7 @@ public class testReporter {
         LOGGER.info(strMessage);
 	  
 	  /* Report pass through assert (which doesn't log anything!).*/
-        Assert.assertTrue(true, strMessage);
+        Assert.assertTrue(strMessage,true);
     }
 
     /**
@@ -101,7 +101,7 @@ public class testReporter {
       
       /* Report FAIL through an assert however do not exit the test */
         try {
-            Assert.assertTrue(false, strMessage);
+            Assert.assertTrue( strMessage,false);
         } catch (Error e) {
         }
     }

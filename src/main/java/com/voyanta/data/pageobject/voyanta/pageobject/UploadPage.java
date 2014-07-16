@@ -52,9 +52,11 @@ public class UploadPage extends BaseClass {
 //			robot.keyRelease(KeyEvent.VK_ENTER);
 //         robot.delay(20000);
 		 selectFileButton.sendKeys(filePath);
+         VUtils.waitFor(20);
 
          if(saveButton.getAttribute("class").contains("disabled"))
          {
+             VUtils.waitFor(10);
              selectFileButton.click();
 //			//driver.findElement(By.cssSelector(".fileinput-button>input")).sendKeys("C:/Test.txt");
              setClipboardData(filePath);

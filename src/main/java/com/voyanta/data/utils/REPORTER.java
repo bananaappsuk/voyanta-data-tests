@@ -2,7 +2,8 @@ package com.voyanta.data.utils;
 
 
 import com.voyanta.data.utils.testReporter.testReporter;
-import org.testng.Assert;
+import org.junit.Assert;
+
 
 public class REPORTER {
 

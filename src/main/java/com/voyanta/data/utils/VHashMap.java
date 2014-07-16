@@ -1,6 +1,5 @@
 package com.voyanta.data.utils;
 
-import com.sun.tools.javac.util.Convert;
 import com.voyanta.data.utils.utils.StringConstants;
 import org.apache.log4j.Logger;
 

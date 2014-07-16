@@ -9,7 +9,6 @@
 
 package com.voyanta.data.pageobject.voyanta.pageobject;
 
-import com.sun.tools.javac.file.JavacFileManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -10,7 +10,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.testng.Assert;
+import org.junit.Assert;
+
 
 import java.io.FileInputStream;
 import java.text.ParseException;
