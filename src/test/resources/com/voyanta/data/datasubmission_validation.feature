@@ -18,6 +18,11 @@ Feature: Data Submission Test for validating the Data at cell level
   | Lease (v5.1).xlsx   | Lease.sql       |
     | Development.xlsx    | Development.sql |
     | Investment.xlsx | Investment.sql |
+    | LegalEntity.xlsx    | LegalEntity.sql |
+    | Legal Entity Vendor.xlsx | LegalEntityVendor.sql |
+    | Asset Transaction.xlsx | AssetTransaction.sql |
+    | InvestmentLimit.xlsx | Investmentlimit.sql |
+    | InvestmentValuation.xlsx | InvestmentValuation.sql |
 
 @done
   Scenario Outline: Upload data with additional columns and verify the data
