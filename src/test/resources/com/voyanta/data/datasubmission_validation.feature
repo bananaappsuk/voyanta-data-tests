@@ -32,4 +32,4 @@ Feature: Data Submission Test for validating the Data at cell level
  Examples:
 
   | FileName          | QueryName    | additionalColumn | existingColumn |
-    | Building 2.xlsx     | Building1.sql | AssetActive      | Active         |
+    | Building 2.xlsx     | Building.sql | AssetActive      | Active         |
