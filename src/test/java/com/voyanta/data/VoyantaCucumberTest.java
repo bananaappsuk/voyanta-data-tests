@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@Cucumber.Options(tags="@ram",format = {"pretty", "html:target/cucumber","json:target/cucumber.json"})
+@Cucumber.Options(tags="@done",format = {"pretty", "html:target/cucumber","json:target/cucumber.json"})
 public class VoyantaCucumberTest {
 }
 
