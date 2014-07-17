@@ -15,7 +15,6 @@ Feature: Data Submission Test for validating the Data at cell level
   Examples:
 
     | FileName            | QueryName       |
-  | Building 2.xlsx     | Building.sql    |
   | Lease (v5.1).xlsx   | Lease.sql       |
     | Development.xlsx    | Development.sql |
 
@@ -33,5 +32,4 @@ Feature: Data Submission Test for validating the Data at cell level
  Examples:
 
   | FileName          | QueryName    | additionalColumn | existingColumn |
-    | Building.xlsx     | Building1.sql | AssetActive      | Active         |
-    | Lease (v5.1).xlsx | Lease.sql    |                  |                |
+    | Building 2.xlsx     | Building1.sql | AssetActive      | Active         |
