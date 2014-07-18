@@ -125,8 +125,9 @@ public class DataManager extends BaseClass{
 	
 	public void go_to_History()
 	{
+        VUtils.waitFor(17);
 		SubmissionHistory.click();
-        VUtils.waitFor(20);
+        VUtils.waitFor(6);
 	}
     public WebElement getTopRow() {
         return TopRow;
