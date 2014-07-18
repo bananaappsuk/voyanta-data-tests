@@ -35,7 +35,21 @@ Feature: Data Submission Test for validating the Data at cell level
     | EquityParticipation.xlsx | EquityParticipation.sql |
     | Asset Valuation.xlsx | AssetValuation.sql |
     | GroundLease.xlsx    | GroundLease.sql |
-    |Unit (v5.0).xlsx     | Unit.sql        |
+    | Unit (v5.0).xlsx     | Unit.sql        |
+    | Lease Unit (v5.1).xlsx | LeaseUnit.sql |
+    | AccountsReceivable.xlsx | AccountReceivables.sql |
+    | Recurring Billing.xlsx | RecurringBilling.sql |
+    | RentEscalation.xlsx | RentEscalation.sql |
+    | Option.xlsx         | Option.sql      |
+    | TenantAllowence.xlsx | TenantAllowance.sql |
+    | Recovery.xlsx       | Recovery.sql    |
+    | Sales.xlsx          | Sales.sql       |
+    | SalesBreakpoint.xlsx | SalesBreakpoint.sql |
+    | Account.xlsx        | Account.sql     |
+    | AccountActivity.xlsx | AccountActivity.sql |
+    | MarketStatistics.xlsx | MarketStatistics.sql |
+    | Assumption.xlsx    | Assumption.sql  |
+    | AssumptionProfile.xlsx | AssumptionProfile.sql |
 
 @done
   Scenario Outline: Upload data with additional columns and verify the data
