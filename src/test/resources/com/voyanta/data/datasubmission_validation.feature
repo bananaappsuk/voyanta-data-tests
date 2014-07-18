@@ -23,6 +23,19 @@ Feature: Data Submission Test for validating the Data at cell level
     | Asset Transaction.xlsx | AssetTransaction.sql |
     | InvestmentLimit.xlsx | Investmentlimit.sql |
     | InvestmentValuation.xlsx | InvestmentValuation.sql |
+    | Debt Facility.xlsx   | DebtFacility.sql |
+    | Debt Facility Event.xlsx | DebtFacilityEvent.sql |
+    | Debt Facility Status.xlsx | DebtFacilityStatus.sql |
+    | Covenant.xlsx       | Covenant.sql    |
+    | Covenant Limit.xlsx | CovenantLimit.sql |
+    | Covenant Value.xlsx | CovenantValue.sql |
+    | Debt Collateral.xlsx | DebtCollateral.sql |
+    | Debt Valuation.xlsx | DebtValuation.sql |
+    | Debt Participation.xlsx | DebtParticipation.sql |
+    | EquityParticipation.xlsx | EquityParticipation.sql |
+    | Asset Valuation.xlsx | AssetValuation.sql |
+    | GroundLease.xlsx    | GroundLease.sql |
+    |Unit (v5.0).xlsx     | Unit.sql        |
 
 @done
   Scenario Outline: Upload data with additional columns and verify the data
