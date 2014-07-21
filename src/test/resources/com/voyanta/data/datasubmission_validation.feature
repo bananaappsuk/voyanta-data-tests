@@ -14,10 +14,10 @@ Feature: Data Submission Test for validating the Data at cell level
 
   Examples:
     | FileName            | QueryName       |
-    | Lease (v5.1).xlsx   | Lease.sql       |
+#    | Lease (v5.1).xlsx   | Lease.sql       |
     | Development.xlsx    | Development.sql |
     | Investment.xlsx | Investment.sql |
-    | LegalEntity.xlsx    | LegalEntity.sql |
+#    | LegalEntity.xlsx    | LegalEntity.sql |
     | Legal Entity Vendor.xlsx | LegalEntityVendor.sql |
     | Asset Transaction.xlsx | AssetTransaction.sql |
     | InvestmentLimit.xlsx | Investmentlimit.sql |
@@ -28,7 +28,7 @@ Feature: Data Submission Test for validating the Data at cell level
     | Covenant.xlsx       | Covenant.sql    |
     | Covenant Limit.xlsx | CovenantLimit.sql |
     | Covenant Value.xlsx | CovenantValue.sql |
-    | Debt Collateral.xlsx | DebtCollateral.sql |
+#    | Debt Collateral.xlsx | DebtCollateral.sql |
     | Debt Valuation.xlsx | DebtValuation.sql |
     | Debt Participation.xlsx | DebtParticipation.sql |
     | EquityParticipation.xlsx | EquityParticipation.sql |
@@ -49,6 +49,7 @@ Feature: Data Submission Test for validating the Data at cell level
     | MarketStatistics.xlsx | MarketStatistics.sql |
     | Assumption.xlsx    | Assumption.sql  |
     | AssumptionProfile.xlsx | AssumptionProfile.sql |
+    
 
   Scenario Outline: Upload data with additional columns and verify the data
 
