@@ -2,7 +2,7 @@
 Feature: Data Submission Test for validating the Data at cell level
 
 
-  @done@ram
+  @ram
   Scenario Outline: Data Submission Test to load the data and check the data uploaded matches the data from Database
 
     Given The DataSheet exits in the QA Box with name '<FileName>'
@@ -13,44 +13,44 @@ Feature: Data Submission Test for validating the Data at cell level
     And data in all the cells should match
 
   Examples:
-    | FileName            | QueryName       |
-#    | Lease (v5.1).xlsx   | Lease.sql       |
-    | Development.xlsx    | Development.sql |
-    | Investment.xlsx | Investment.sql |
-#    | LegalEntity.xlsx    | LegalEntity.sql |
-    | Legal Entity Vendor.xlsx | LegalEntityVendor.sql |
-    | Asset Transaction.xlsx | AssetTransaction.sql |
-    | InvestmentLimit.xlsx | Investmentlimit.sql |
-    | InvestmentValuation.xlsx | InvestmentValuation.sql |
-    | Debt Facility.xlsx   | DebtFacility.sql |
-    | Debt Facility Event.xlsx | DebtFacilityEvent.sql |
-    | Debt Facility Status.xlsx | DebtFacilityStatus.sql |
-    | Covenant.xlsx       | Covenant.sql    |
-    | Covenant Limit.xlsx | CovenantLimit.sql |
-    | Covenant Value.xlsx | CovenantValue.sql |
-#    | Debt Collateral.xlsx | DebtCollateral.sql |
-    | Debt Valuation.xlsx | DebtValuation.sql |
-    | Debt Participation.xlsx | DebtParticipation.sql |
-    | EquityParticipation.xlsx | EquityParticipation.sql |
-    | Asset Valuation.xlsx | AssetValuation.sql |
-    | GroundLease.xlsx    | GroundLease.sql |
-    | Unit (v5.0).xlsx     | Unit.sql        |
-    | Lease Unit (v5.1).xlsx | LeaseUnit.sql |
-    | AccountsReceivable.xlsx | AccountReceivables.sql |
-    | Recurring Billing.xlsx | RecurringBilling.sql |
-    | RentEscalation.xlsx | RentEscalation.sql |
-    | Option.xlsx         | Option.sql      |
-    | TenantAllowence.xlsx | TenantAllowance.sql |
-    | Recovery.xlsx       | Recovery.sql    |
-    | Sales.xlsx          | Sales.sql       |
-    | SalesBreakpoint.xlsx | SalesBreakpoint.sql |
-    | Account.xlsx        | Account.sql     |
-    | AccountActivity.xlsx | AccountActivity.sql |
-    | MarketStatistics.xlsx | MarketStatistics.sql |
-    | Assumption.xlsx    | Assumption.sql  |
-    | AssumptionProfile.xlsx | AssumptionProfile.sql |
-    
 
+    | FileName            | QueryName       |
+    | Lease (v5.1).xlsx   | Lease.sql       |
+  #  | Development.xlsx    | Development.sql |
+  #  | Investment.xlsx | Investment.sql |
+  #  | LegalEntity.xlsx    | LegalEntity.sql |
+  #  | Legal Entity Vendor.xlsx | LegalEntityVendor.sql |
+  #  | Asset Transaction.xlsx | AssetTransaction.sql |
+  #  | InvestmentLimit.xlsx | Investmentlimit.sql |
+  #  | InvestmentValuation.xlsx | InvestmentValuation.sql |
+  #  | Debt Facility.xlsx   | DebtFacility.sql |
+  #  | Debt Facility Event.xlsx | DebtFacilityEvent.sql |
+  #  | Debt Facility Status.xlsx | DebtFacilityStatus.sql |
+  #  | Covenant.xlsx       | Covenant.sql    |
+  #  | Covenant Limit.xlsx | CovenantLimit.sql |
+  #  | Covenant Value.xlsx | CovenantValue.sql |
+  #  | Debt Collateral.xlsx | DebtCollateral.sql |
+  #  | Debt Valuation.xlsx | DebtValuation.sql |
+  #  | Debt Participation.xlsx | DebtParticipation.sql |
+  #  | EquityParticipation.xlsx | EquityParticipation.sql |
+  #  | Asset Valuation.xlsx | AssetValuation.sql |
+  #  | GroundLease.xlsx    | GroundLease.sql |
+  #  | Unit (v5.0).xlsx     | Unit.sql        |
+  #  | Lease Unit (v5.1).xlsx | LeaseUnit.sql |
+  #  | AccountsReceivable.xlsx | AccountReceivables.sql |
+  #  | Recurring Billing.xlsx | RecurringBilling.sql |
+  #  | RentEscalation.xlsx | RentEscalation.sql |
+  #  | Option.xlsx         | Option.sql      |
+  #  | TenantAllowence.xlsx | TenantAllowance.sql |
+  #  | Recovery.xlsx       | Recovery.sql    |
+  #  | Sales.xlsx          | Sales.sql       |
+  #  | SalesBreakpoint.xlsx | SalesBreakpoint.sql |
+  #  | Account.xlsx        | Account.sql     |
+  #  | AccountActivity.xlsx | AccountActivity.sql |
+  #  | MarketStatistics.xlsx | MarketStatistics.sql |
+  #  | Assumption.xlsx    | Assumption.sql  |
+#    | AssumptionProfile.xlsx | AssumptionProfile.sql |
+@hiten@done
   Scenario Outline: Upload data with additional columns and verify the data
 
    Given The DataSheet exits in the QA Box with name '<FileName>'
@@ -63,6 +63,16 @@ Feature: Data Submission Test for validating the Data at cell level
 
  Examples:
 
-  | FileName          | QueryName    | additionalColumn | existingColumn |
-    | Building.xlsx     | Building1.sql | AssetActive      | Active         |
-    | Lease (v5.1).xlsx | Lease.sql    |                  |                |
+    | FileName          | QueryName    | additionalColumn | existingColumn |
+   | Building.xlsx     | Building.sql | AssetActive      | Active         |
+    | Development.xlsx  | Development.sql   |                  |                |
+    | Legal Entity Vendor.xlsx | LegalEntityVendor.sql |  | |
+    | Investment.xlsx | Investment.sql |           |             |
+    | Account.xlsx | Account.sql |               |                |
+  # ** APPROVAL FAILED ** | Farm.xlsx | farm.sql | | |
+  # **  | LegalEntity.xlsx | LegalEntity.sql |               |                |
+    | Asset Transaction.xlsx | AssetTransaction.sql | | |
+    | InvestmentLimit.xlsx | Investmentlimit.sql | | |
+    | InvestmentValuation.xlsx | InvestmentValuation.sql | | |
+    | Legal Entity Tenant.xlsx | Tenant.sql |             |                |
+    | Debt Facility.xlsx   | DebtFacility.sql | |                          |
