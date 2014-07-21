@@ -195,6 +195,7 @@ public class ValidationUtils {
         int failedcounter=0,counter = 0;
         int totalCount = (actualData.size()>=expData.size())?actualData.size():expData.size();
         int recordFailCounter=0;
+        String[] primaryKeys=null;
 
         for(Object key :expData.get(0).keySet())
         {
@@ -214,7 +215,8 @@ public class ValidationUtils {
 
         for(int i=0;i<=totalCount-1;i++)
         {
-            HashMap actualRecord = getRecordWithKey(actualData,matchingKey,expData.get(i).get(matchingKey));
+
+            HashMap actualRecord = getRecordWithKey(actualData,matchingKey,expData.get(i).get(matchingKey),primaryKeys);
 
             if(actualRecord==null)
             {
@@ -274,7 +276,9 @@ public class ValidationUtils {
 //        Assert.assertEquals("Data validation failed. Please see the details above",0,failedcounter);
     }
 
-    private static HashMap getRecordWithKey(List<HashMap> actualData, String matchingKey, Object value) {
+    private static HashMap getRecordWithKey(List<HashMap> actualData, String matchingKey, Object value,String[] primaryKeys) {
+
+        int i=0;
         if(!actualData.get(0).containsKey(matchingKey))
         {
             LOGGER.info("The key "+matchingKey+"not found in actual data:"+value);
@@ -282,22 +286,47 @@ public class ValidationUtils {
         }
         for(HashMap record:actualData)
         {
+            String recordValue = record.get(matchingKey).toString();
             //System.out.println(record.get(matchingKey) + " WITH " + value.toString());
-            if(record.get(matchingKey).equals(value.toString()))
+            if(recordValue.equals(value.toString()))
             {
+                i++;
+                if(isCorrectRecord(primaryKeys,recordValue,i))
+                    return record;
 
-                return record;
             }
+
 
         }
 
         return null;
     }
 
+    private static boolean isCorrectRecord(String[] primaryKeys,String value, int i) {
+        int occurances=getOccurances(primaryKeys,value);
+
+        if(occurances==i)
+            return true;
+        return false;
+    }
+
+    private static int getOccurances(String[] primaryKeys, String value) {
+       int occ=0;
+        for(int i=0;i<=primaryKeys.length-1;i++)
+        {
+            if(primaryKeys[i]!=null) {
+                if (primaryKeys[i].equals(value))
+                    occ++;
+            }
+        }
+        return occ;
+    }
+
     public static void compareTwoThings(List<HashMap> A, List<HashMap> B, String matchingKey)
     {
         List<HashMap> biggerList=null,smallerList=null;
         int counter=0,failedcounter=0,fullFailedCounter=0;
+        String[] primaryKeys=null;
 
         if(A.size()>B.size())
         {
@@ -319,15 +348,21 @@ public class ValidationUtils {
             smallerList=B;
             LOGGER.info("PASS: Number of Records in Expected Data:"+A.size()+"match with Actual Data:"+B.size());
         }
+        primaryKeys = new String[smallerList.size()];
 
         for(int i=0;i<smallerList.size();i++)
         {
             counter=0;
             failedcounter=0;
-            HashMap currentRecord = getRecordWithKey(biggerList,matchingKey,smallerList.get(i).get(matchingKey));
+            Object value = smallerList.get(i).get(matchingKey);
+
+            primaryKeys[i] = value.toString();
+
+            HashMap currentRecord = getRecordWithKey(biggerList,matchingKey,value,primaryKeys);
             if(currentRecord==null)
             {
                 LOGGER.info("No record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+                failedcounter++;
             }
             else
             {
