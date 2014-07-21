@@ -18,7 +18,7 @@ Feature: Checking the export functionality
     | DEVELOPMENT-Development.xml | DEVELOPMENT-Development.xml | DEVELOPMENT_EXTRACT | DEVELOPMENT_EXTRACT | DEVELOPMENT    | DEVELOPMENT  | AssetReference |
 #    | INVESTMENT-Investment.xml | INVESTMENT-Investment.xml |INVESTMENT_EXTRACT      |INVESTMENT_EXTRACT  |INVESTMENT      |INVESTMENT    |LegalEntityReference|
 
-  @ram_new@done
+  @ram_new
   Scenario Outline: Export functionality
 
     Given an exported file exists with name '<ExpectedFile>'
