@@ -35,7 +35,7 @@ public class UIStepDefs {
     static String propertiesFileName = "src/main/resources/";
     String fileName ;
     static Logger LOGGER = Logger.getLogger(UIStepDefs.class);
-    @Before
+    @Before("~@export")
     public static void driverUp() throws MalformedURLException, InterruptedException {
 
 ////	   System.setProperty("webdri
@@ -87,7 +87,7 @@ public class UIStepDefs {
         Assert.assertTrue("File uploaded but not Approved", dataManager.getFirstRowText().contains("Approved"));
     }
 
-    @After
+    @After("~@export")
     public static void tearDown(){
         driver.close();
         driver.quit();

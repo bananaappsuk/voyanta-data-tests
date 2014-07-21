@@ -28,7 +28,7 @@ public class DataUtils {
 
             vHashMapList.get(i).put(additionalColumn,vHashMapList.get(i).get(existingColumn));
         }
-        LOGGER.info("Added a new column "+additionalColumn+" with from "+existingColumn);
+        LOGGER.info("Added a new column "+additionalColumn+" from "+existingColumn);
         return vHashMapList;
     }
 }

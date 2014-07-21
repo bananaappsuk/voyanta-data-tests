@@ -3,6 +3,7 @@ package com.voyanta.data;
 import com.voyanta.data.utils.VHashMap;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import sun.net.www.content.image.gif;
 
 import java.util.*;
 
@@ -186,5 +187,197 @@ public class ValidationUtils {
             }
 
         }
+    }
+    public static void compareListOfArrays(List<HashMap> expData, List<HashMap> actualData,String matchingKey) {
+
+// int i = 0;
+        int failcounter=0;
+        int failedcounter=0,counter = 0;
+        int totalCount = (actualData.size()>=expData.size())?actualData.size():expData.size();
+        int recordFailCounter=0;
+
+        for(Object key :expData.get(0).keySet())
+        {
+            if(!actualData.get(0).containsKey(key))
+            {
+                LOGGER.info("Missing column in Actual Data :"+key.toString());
+                failcounter++;
+            }
+        }
+        if(!(expData.size()==(actualData.size())))
+        {
+            LOGGER.info("number of records size not matching...");
+            LOGGER.info("Expected attributes are "+expData.size()+" where as Actual attributes are "+actualData.size()+"");
+            failedcounter++;
+        }
+
+
+        for(int i=0;i<=totalCount-1;i++)
+        {
+            HashMap actualRecord = getRecordWithKey(actualData,matchingKey,expData.get(i).get(matchingKey));
+
+            if(actualRecord==null)
+            {
+                LOGGER.info("The row with the key not found in actual data:"+expData.get(i).get(matchingKey));
+                failcounter++;
+
+            }
+            else
+            {
+                Set<String> set1=expData.get(i).keySet();
+                Iterator<String> iter1=set1.iterator();
+
+                while (iter1.hasNext())
+                {
+                    String key = iter1.next();
+                    // Check if the current value is a key in the 2nd map
+                    if (!expData.get(i).containsKey(key) ){
+                        LOGGER.info("This Key not available in expected values:"+key);
+                        failedcounter ++;
+                    }
+                    else if (!actualRecord.equals(expData.get(i).get(key)) )
+                    {
+                        LOGGER.info("Column name :" + key.toString() + " Actual Value :'" + actualRecord.get(key) + "' Expected Value :'" + expData.get(i).get(key) + "'");
+    //                    LOGGER.info("Expected available:"+excelMap.get(key));
+                        failedcounter ++;
+                    }
+                    counter++;
+                }
+            }
+            LOGGER.info("TOTAL TESTS : "+counter+" record :"+(i+1));
+
+            if(failedcounter==0)
+                LOGGER.info("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
+            else
+            {
+                LOGGER.info("FAILED TESTS : "+failedcounter+" record:"+(i+1));
+                failcounter++;
+            }
+
+
+//        Set<String> set2=excelSheetData.get(i).entrySet();
+//        Iterator<String> iter2=set2.iterator();
+//
+//        while (iter2.hasNext())
+//        {
+//           String value1 = iter2.next();
+//           String value2 =  ((value1).getValue();
+//            // Check if the current value is a key in the 2nd map
+//            if (!dataBaseData.get(i).containsValue(value1) ){
+//                LOGGER.info("value not available "+value1);
+//
+//            }
+//        }
+
+
+        }
+//        Assert.assertEquals("Data validation failed. Please see the details above",0,failedcounter);
+    }
+
+    private static HashMap getRecordWithKey(List<HashMap> actualData, String matchingKey, Object value) {
+        if(!actualData.get(0).containsKey(matchingKey))
+        {
+            LOGGER.info("The key "+matchingKey+"not found in actual data:"+value);
+            return null;
+        }
+        for(HashMap record:actualData)
+        {
+            //System.out.println(record.get(matchingKey) + " WITH " + value.toString());
+            if(record.get(matchingKey).equals(value.toString()))
+            {
+
+                return record;
+            }
+
+        }
+
+        return null;
+    }
+
+    public static void compareTwoThings(List<HashMap> A, List<HashMap> B, String matchingKey)
+    {
+        List<HashMap> biggerList=null,smallerList=null;
+        int counter=0,failedcounter=0,fullFailedCounter=0;
+
+        if(A.size()>B.size())
+        {
+            biggerList=A;
+            smallerList=B;
+            LOGGER.info("FAIL: Number of Records in Expected Data:"+A.size()+" doesnt match with Actual Data:"+B.size());
+            fullFailedCounter++;
+        }
+        else if(A.size()<B.size())
+        {
+            biggerList=B;
+            smallerList=A;
+            LOGGER.info("FAIL: Number of Records in Expected Data:"+A.size()+" doesnt match with Actual Data:"+B.size());
+            fullFailedCounter++;
+        }
+        else
+        {
+            biggerList=A;
+            smallerList=B;
+            LOGGER.info("PASS: Number of Records in Expected Data:"+A.size()+"match with Actual Data:"+B.size());
+        }
+
+        for(int i=0;i<smallerList.size();i++)
+        {
+            counter=0;
+            failedcounter=0;
+            HashMap currentRecord = getRecordWithKey(biggerList,matchingKey,smallerList.get(i).get(matchingKey));
+            if(currentRecord==null)
+            {
+                LOGGER.info("No record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+            }
+            else
+            {
+                LOGGER.info("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+
+                counter++;
+
+                failedcounter = compareRecords(smallerList.get(i), currentRecord);
+                counter=counter+smallerList.get(i).size();
+            }
+
+            LOGGER.info("TOTAL TESTS : "+counter+" record :"+(i+1));
+
+            if(failedcounter==0)
+                LOGGER.info("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
+            else
+            {
+                LOGGER.info("FAILED TESTS : "+failedcounter+" record:"+(i+1));
+
+            }
+            fullFailedCounter=fullFailedCounter+failedcounter;
+        }
+
+        LOGGER.info("TOTAL FAILED TESTS:"+fullFailedCounter);
+        Assert.assertEquals("TESTS ARE FAILED. PLEASE SEE LOG FILE",0,fullFailedCounter);
+    }
+
+    private static int compareRecords(HashMap A, HashMap B) {
+
+        int failedcounter=0;
+        Set<String> set1=A.keySet();
+
+        Iterator<String> iter1=set1.iterator();
+
+        while (iter1.hasNext())
+        {
+            String key = iter1.next();
+            // Check if the current value is a key in the 2nd map
+            if (!B.containsKey(key) ){
+                LOGGER.info("This Key not available in expected record:"+key);
+                failedcounter ++;
+            }
+            else if (!A.get(key).equals(B.get(key)) )
+            {
+                LOGGER.info("Column name :" + key.toString() + " Actual Value :'" + A.get(key) + "' Expected Value :'" + B.get(key) + "'");
+                //                    LOGGER.info("Expected available:"+excelMap.get(key));
+                failedcounter ++;
+            }
+            //counter++;
+        }
+        return failedcounter;
     }
 }
