@@ -40,20 +40,20 @@ public class UIStepDefs {
 
 ////	   System.setProperty("webdri
 // ver.chrome.driver", "/Users/sriramangajala/Documents/Automated-UAT/voyanta-availablity-tests/src/main/resources/chromedriver 5");
-        driver=new FirefoxDriver();
-//////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
-//        Capabilities capabilities = DesiredCapabilities.firefox();
-//        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
-
-//        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
-
-        URL = PropertiesLoader.getProperty("ui_url");
-        driver.get(URL);
-        driver.manage().window().maximize();
-        signInPage=new SignInPageObject();
-        PageFactory.initElements(driver, signInPage);
-        signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));
-        LOGGER.info("Test phase:"+System.getProperty("test_phase"));
+        driver=BrowserFactory.getDriver();
+////////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
+////        Capabilities capabilities = DesiredCapabilities.chrome();
+////        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
+////
+////        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
+//
+//        URL = PropertiesLoader.getProperty("ui_url");
+//        driver.get(URL);
+//        driver.manage().window().maximize();
+//        signInPage=new SignInPageObject();
+//        PageFactory.initElements(driver, signInPage);
+//        signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));
+//        LOGGER.info("Test phase:"+System.getProperty("test_phase"));
 
 //        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
 
@@ -62,15 +62,17 @@ public class UIStepDefs {
     @When("^user uploads the Data from 'UI' with file '(.*)'$")
     public void user_uploads_the_Data_from_UI(String fileName) throws Throwable {
         this.fileName = fileName;
+
         UploadPage uploadPage = new UploadPage();
         PageFactory.initElements(driver, uploadPage);
         driver.get(uploadPage.getURL());
+
         uploadPage.selectFiles(PropertiesLoader.getProperty("windows_boxFolder")+PropertiesLoader.getProperty("windows_testDataFolder")+fileName);
 
+//        uploadPage.waitTillFileIsUploaded(driver);
         uploadPage.save();
 
         VUtils.waitFor(10);
-
     }
 
     @When("^it also passed through the Validation and Approval$")
@@ -78,7 +80,8 @@ public class UIStepDefs {
     {
         DataManager dataManager = new DataManager();
         PageFactory.initElements(driver, dataManager);
-
+        dataManager.waitTill(driver,"Validating");
+        dataManager.waitTill(driver,"Approving");
         dataManager.go_to_History();
         dataManager.setDriver(driver);
 
@@ -86,12 +89,12 @@ public class UIStepDefs {
         Assert.assertTrue("File found but not the latest one", dataManager.getFirstRowText().contains("secs"));
         Assert.assertTrue("File uploaded but not Approved", dataManager.getFirstRowText().contains("Approved"));
     }
-
-    @After("~@export")
-    public static void tearDown(){
-        driver.close();
-        driver.quit();
-        driver=null;
-    }
+//
+//    @After("~@export")
+//    public static void tearDown(){
+//        driver.close();
+//        driver.quit();
+//        driver=null;
+//    }
 
 }

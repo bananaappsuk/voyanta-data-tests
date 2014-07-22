@@ -1,6 +1,8 @@
 package com.voyanta.data.pageobject.voyanta;
 
 
+import com.voyanta.data.pageobject.voyanta.pageobject.WaitUtils;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,12 +10,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.util.List;
+
 /**
  * @author ting 
  *  This class defines all the relevant elements and services provided by Sign In Page
  *
  */
 public class SignInPageObject {
+    static Logger LOGGER = Logger.getLogger(SignInPageObject.class);
 
     private static final int MAX_TIME_OUT = 60;
     //	private WebDriver driver;
@@ -55,6 +60,7 @@ public class SignInPageObject {
 	 }
 	
 	 public void signIn(String userName, String passWord){
+         LOGGER .info("Logging in with the username and password :"+userName+" , "+passWord);
 		 inputEmail.sendKeys(userName);
 		 inputPassword.sendKeys(passWord);
 		 buttonSignIn.click();
@@ -69,6 +75,7 @@ public class SignInPageObject {
 					System.out.println("sleep error");
 				}
          Assert.assertTrue("Login unsuccessful. Please check if application is up and running!",body.getText().contains("Overview"));
+         LOGGER .info("Loggin success with the username and password: "+userName+" , "+passWord);
 	 }
 	 
 	

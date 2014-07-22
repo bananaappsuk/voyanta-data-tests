@@ -10,6 +10,7 @@
 package com.voyanta.data.pageobject.voyanta.pageobject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -135,5 +136,9 @@ public class DataManager extends BaseClass{
 
     public String getFirstRowText() {
         return driver.findElement(By.xpath("//div[@id='list-table-holder']/table/tbody/tr")).getText();
+    }
+
+    public void waitTill(WebDriver driver,String Text) {
+        WaitUtils.waitForTextIsNotPresentInElement(driver,By.xpath("//td[5]/span"),Text);
     }
 }
