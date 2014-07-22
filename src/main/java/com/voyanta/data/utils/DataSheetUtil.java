@@ -1,5 +1,6 @@
 package com.voyanta.data.utils;
 
+import com.sun.deploy.trace.LoggerTraceListener;
 import com.voyanta.data.utils.utils.StringConstants;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -63,8 +64,8 @@ public class DataSheetUtil {
             // Get the test data from the datasheet
             getTestDataSet();
         } catch (Exception e) {
-
             Assert.fail("getTestDataFromExcel: Could not load data - " + e.getMessage());
+
         }
         return objHashMap;
     }
@@ -80,9 +81,9 @@ public class DataSheetUtil {
                 int headerRow = keyColumn-1;
                 int row = (rowStart-1)+(intRowCounter-1);
                 int column = (intColCounter-1);
-                LOGGER.debug("Getting data from cell : with row " + row + " and Column " + column);
+                LOGGER.info("Getting data from cell : with row " + row + " and Column " + column);
 
-                LOGGER.debug("key= " + getCellValueAsString(headerRow, column) + ": value= " + getCellValueAsString(row, column));
+                LOGGER.info("key= " + getCellValueAsString(headerRow, column) + ": value= " + getCellValueAsString(row, column));
 //                LOGGER.info("Value = "+getCellValueAsString(intRowCounter, intColCounter));
                 hashMap.put(getCellValueAsString(headerRow,column).replace("(","").replace(")",""), getCellValueAsString(row, column).trim());
             }
@@ -112,6 +113,7 @@ public class DataSheetUtil {
         // Get cell format type
         String strCellValue = null;
         int intCellFormat = getCellFormatType(intRowRef, intColRef);
+        LOGGER.info("Getting data from row:"+intRowRef+" column "+intColRef+" with the format "+intCellFormat);
 
         // Cast the cell value into a String
         switch (intCellFormat) {
