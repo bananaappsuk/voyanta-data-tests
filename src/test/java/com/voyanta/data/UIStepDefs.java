@@ -66,7 +66,7 @@ public class UIStepDefs {
         UploadPage uploadPage = new UploadPage();
         PageFactory.initElements(driver, uploadPage);
         driver.get(uploadPage.getURL());
-
+        VUtils.waitFor(5);
         uploadPage.selectFiles(PropertiesLoader.getProperty("windows_boxFolder")+PropertiesLoader.getProperty("windows_testDataFolder")+fileName);
 
 //        uploadPage.waitTillFileIsUploaded(driver);

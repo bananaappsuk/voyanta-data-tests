@@ -126,9 +126,8 @@ public class DataManager extends BaseClass{
 	
 	public void go_to_History()
 	{
-        VUtils.waitFor(20);
-
-        SubmissionHistory.click();
+       VUtils.waitFor(5);
+       SubmissionHistory.click();
         VUtils.waitFor(6);
 	}
     public WebElement getTopRow() {
@@ -140,6 +139,6 @@ public class DataManager extends BaseClass{
     }
 
     public void waitTill(WebDriver driver,String Text) {
-        WaitUtils.waitForTextIsNotPresentInElement(driver,By.xpath("//td[5]/span"),Text);
+        WaitUtils.waitForTextIsNotPresentInElement(driver,By.xpath("//tr[contains(@class,'item-row')]"),Text);
     }
 }

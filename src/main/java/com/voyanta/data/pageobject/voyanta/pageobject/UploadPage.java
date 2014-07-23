@@ -63,9 +63,9 @@ public class UploadPage extends BaseClass {
 //			robot.keyRelease(KeyEvent.VK_ENTER);
 //         robot.delay(20000);
 		 selectFileButton.sendKeys(filePath);
-         VUtils.waitFor(5);
+         VUtils.waitFor(10);
 
-         if(saveButton.getAttribute("class").contains("disabled")||body.getText().contains("Error uploading file"))
+         if(saveButton.getAttribute("class").contains("disabled"))//||body.getText().contains("Error uploading file"))
          {
 
              VUtils.waitFor(10);
@@ -85,7 +85,7 @@ public class UploadPage extends BaseClass {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
             robot.delay(2000);
-             selectFileButton.sendKeys(filePath);
+          //   selectFileButton.sendKeys(filePath);
              robot.keyPress(KeyEvent.VK_ENTER);
              robot.keyRelease(KeyEvent.VK_ENTER);
          }

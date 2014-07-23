@@ -81,9 +81,9 @@ public class DataSheetUtil {
                 int headerRow = keyColumn-1;
                 int row = (rowStart-1)+(intRowCounter-1);
                 int column = (intColCounter-1);
-                LOGGER.info("Getting data from cell : with row " + row + " and Column " + column);
+                LOGGER.debug("Getting data from cell : with row " + row + " and Column " + column);
 
-                LOGGER.info("key= " + getCellValueAsString(headerRow, column) + ": value= " + getCellValueAsString(row, column));
+                LOGGER.debug("key= " + getCellValueAsString(headerRow, column) + ": value= " + getCellValueAsString(row, column));
 //                LOGGER.info("Value = "+getCellValueAsString(intRowCounter, intColCounter));
                 hashMap.put(getCellValueAsString(headerRow,column).replace("(","").replace(")",""), getCellValueAsString(row, column).trim());
             }
@@ -113,7 +113,7 @@ public class DataSheetUtil {
         // Get cell format type
         String strCellValue = null;
         int intCellFormat = getCellFormatType(intRowRef, intColRef);
-        LOGGER.info("Getting data from row:"+intRowRef+" column "+intColRef+" with the format "+intCellFormat);
+        LOGGER.debug("Getting data from row:"+intRowRef+" column "+intColRef+" with the format "+intCellFormat);
 
         // Cast the cell value into a String
         switch (intCellFormat) {
