@@ -51,16 +51,12 @@ public class DataModelSteps {
             boxFolder = PropertiesLoader.getProperty("mac_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("mac_testDataFolder");
             SQLFolder = PropertiesLoader.getProperty("mac_SQLFolder");
-            exportExpectedFolder=PropertiesLoader.getProperty("mac_ExportExpectedFolder");
-            exportActualFolder =PropertiesLoader.getProperty("mac_ExportActualFolder");
         }
         else
         {
             boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
             SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
-            exportExpectedFolder=PropertiesLoader.getProperty("mac_ExportExpectedFolder");
-            exportActualFolder =PropertiesLoader.getProperty("mac_ExportActualFolder");
         }
         dataSheet=null;
         dataBaseData=null;
@@ -135,6 +131,32 @@ public class DataModelSteps {
     public void both_files_should_have_same_set_of_data(String key) throws Throwable {
         ValidationUtils.compareTwoThings(expExportData,actualExportData,key);
     }
+    
+    @Given("all the files are saved under '(.*)' folder")
+    public void all_the_files_are_saved_under_folder(String folderLocation){
+        if(System.getProperty("os.name").toLowerCase().contains("mac"))
+        {
+          if(folderLocation=="StandartExport"){
+            exportExpectedFolder=PropertiesLoader.getProperty("mac_ExportExpectedFolder");
+            exportActualFolder =PropertiesLoader.getProperty("mac_ExportActualFolder");}
+          else 
+          {
+              exportExpectedFolder=PropertiesLoader.getProperty("mac_ExportExpectedTaliance");
+              exportActualFolder =PropertiesLoader.getProperty("mac_ExportActualTaliance");
+          }
+        }
+        else
+        {
+            if(folderLocation.equals("StandartExport")){
+                exportExpectedFolder=PropertiesLoader.getProperty("windows_ExportExpectedFolder");
+                exportActualFolder =PropertiesLoader.getProperty("windows_ExportActualFolder");}
+            else{
+            exportExpectedFolder=PropertiesLoader.getProperty("windows_TalianceExpected");
+            exportActualFolder =PropertiesLoader.getProperty("windows_TalianceActual");
+            }
+        }
+    }
+
 
     @Given("^an exported file exists with name '(.*)'$")
     public void an_exported_file_exists_with_name(String file) throws Throwable {

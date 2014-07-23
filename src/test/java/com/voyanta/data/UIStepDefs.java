@@ -41,21 +41,6 @@ public class UIStepDefs {
 ////	   System.setProperty("webdri
 // ver.chrome.driver", "/Users/sriramangajala/Documents/Automated-UAT/voyanta-availablity-tests/src/main/resources/chromedriver 5");
         driver=BrowserFactory.getDriver();
-////////       System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chrome\\chromedriver.exe");
-////        Capabilities capabilities = DesiredCapabilities.chrome();
-////        LOGGER.info("Server URL is " + PropertiesLoader.getProperty("server"));
-////
-////        driver = new RemoteWebDriver(new java.net.URL(PropertiesLoader.getProperty("server")),capabilities);
-//
-//        URL = PropertiesLoader.getProperty("ui_url");
-//        driver.get(URL);
-//        driver.manage().window().maximize();
-//        signInPage=new SignInPageObject();
-//        PageFactory.initElements(driver, signInPage);
-//        signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));
-//        LOGGER.info("Test phase:"+System.getProperty("test_phase"));
-
-//        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
 
     }
 
