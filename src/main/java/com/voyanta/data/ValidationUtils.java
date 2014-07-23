@@ -3,7 +3,6 @@ package com.voyanta.data;
 import com.voyanta.data.utils.VHashMap;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import sun.net.www.content.image.gif;
 
 import java.util.*;
 
