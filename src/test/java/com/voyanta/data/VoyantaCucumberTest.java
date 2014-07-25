@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@Cucumber.Options(tags={"@dst","~@ignore"},format = {"pretty", "html:target/cucumber","json:target/cucumber.json"})
+@Cucumber.Options(tags={"@export","~@ignore"},format = {"pretty", "html:target/cucumber","json:target/cucumber.json"})
 public class VoyantaCucumberTest extends  baseTest{
 }
 
