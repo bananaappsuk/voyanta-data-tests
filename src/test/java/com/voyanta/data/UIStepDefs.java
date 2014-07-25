@@ -60,7 +60,7 @@ public class UIStepDefs {
         VUtils.waitFor(10);
     }
 
-    @When("^it also passed through the Validation and Approval$")
+    @When("^the DST have passed through the Validations and Approvals$")
     public void the_uploaded_file_is() throws Throwable
     {
         DataManager dataManager = new DataManager();

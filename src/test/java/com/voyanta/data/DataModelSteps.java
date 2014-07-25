@@ -65,7 +65,7 @@ public class DataModelSteps {
         databaseView = new DatabaseView();
     }
 
-    @Given("^The DataSheet exits in the QA Box with name '(.*)'$")
+    @Given("^The DataSheet exists in the QA Box with name '(.*)'$")
     public void the_DataSheet_exits_in_the_QA_Box_with_name(String datasheet) throws Throwable {
         this.dataSheet = datasheet;
         LOGGER.info("Searching for the file :"+datasheet+" in folder :"+boxFolder+testDataFolder);
@@ -73,7 +73,7 @@ public class DataModelSteps {
         Assert.assertTrue(excelFolder.getAbsolutePath().contains(datasheet));
     }
 
-    @Given("^the datasheet data is saved$")
+    @Given("^the data from DST is collected and saved as expected data$")
     public void the_datasheet_data_is_saved() throws Throwable {
         LOGGER.info("Collecting data from spreadsheet...");
         excelSheetData = dataSheetsView.getExcelFileDataInHashMap(boxFolder+testDataFolder,dataSheet,"0");
@@ -81,14 +81,14 @@ public class DataModelSteps {
     }
 
 
-    @Then("^data should be saved in database table with query name '(.*)'$")
+    @When("^data is collected from database with query '(.*)'$")
     public void data_should_be_saved_in_database(String SQLQueryName) throws Throwable {
          String FileName = boxFolder+"/"+SQLFolder+"/"+SQLQueryName;
          dataBaseData = databaseView.getDataBaseRecordsFromFile(FileName,dataSheetsView.getNumberOfRecordsInExcel());
          Assert.assertTrue("Checking if atleast one row is returned from database",dataBaseData.size()>0);
     }
 
-    @Then("^data in all the cells should match$")
+    @Then("^the uploaded data from DST should match with database tables$")
     public void data_in_all_the_cells_should_match() throws Throwable {
         excelSheetData = ValidationUtils.lowerCaseColumnsAndRemoveSpaces(excelSheetData);
         dataBaseData = ValidationUtils.lowerCaseColumnsAndRemoveSpaces(dataBaseData);
@@ -97,7 +97,7 @@ public class DataModelSteps {
 
     }
 
-    @When("^an addition column '(.*)' is mapped with '(.*)'$")
+    @When("^an additional column '(.*)' is mapped with '(.*)'$")
     public void add_additional_column(String additionalColumn,String existingColumn)
     {
         excelSheetData = dataSheetsView.copyDataToAdditionalColumn(excelSheetData,additionalColumn,existingColumn);
