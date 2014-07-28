@@ -25,7 +25,7 @@ public class DBUtils {
     {
         try{
 
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+         //   Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 
             conn = DriverManager.getConnection(url, dbuserName, dbpassword);
