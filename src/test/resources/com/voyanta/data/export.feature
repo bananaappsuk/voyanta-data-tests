@@ -65,12 +65,22 @@ Feature: Checking the export functionality
     Given all the files are saved under 'TalianceExport' folder
     Given an exported file exists with name '<ExpectedFile>'
     And data is loaded with entity name '<Entity>' with primary key '<primarykey>'
+    And ignore the validation taking today's value for <NodeList>
     Then both files should have same set of data
 
   Examples:
 
-    | ExpectedFile                                | Entity              | primarykey              |
-    | _ACCOUNTING_-Account Activity.xml           | ACCOUNTING          |    IDENTITY       |
+    | ExpectedFile                                 | Entity              | primarykey              |
+    | BUILDING-Asset.xml                           | BUILDING            | AssetReference          |
+    | LEASE-Lease.xml                              | LEASE               | LeaseReference          |
+    | DEVELOPMENT-Development.xml                  | DEVELOPMENT         | AssetReference          |
+    | ExpectedFile                                 | Entity              | primarykey              | | 
+    | BUILDING-Asset.xml                           | BUILDING            | AssetReference          || 
+    | LEASE-Lease.xml                              | LEASE               | LeaseReference          || 
+    | DEVELOPMENT-Development.xml                  | DEVELOPMENT         | AssetReference          || 
+    | LEGALENTITY-Legal Entity.xml                 | LEGALENTITY         | LegalEntityReference    |
+    | LEGALENTITYVENDOR-Legal Entity Vendor.xml    | LEGALENTITYVENDOR   | LegalEntityReference    |
+    | ASSETTRANSACTION-Asset Transaction.xml       | ASSETTRANSACTION    | AssetReference          |
 
 
 
