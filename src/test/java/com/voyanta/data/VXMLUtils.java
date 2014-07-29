@@ -59,7 +59,7 @@ package com.voyanta.data;
 
             for(HashMap record:actualExportData)
             {
-                LOGGER.info("Replacing column :"+column+" with new value :"+replaceValue);
+                LOGGER.debug("Replacing column :"+column+" with new value :"+replaceValue);
                 record.remove(column);
                 record.put(column,replaceValue);
             }

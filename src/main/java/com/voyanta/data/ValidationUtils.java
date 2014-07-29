@@ -365,7 +365,7 @@ public class ValidationUtils {
             }
             else
             {
-                LOGGER.info("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+                LOGGER.debug("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
 
                 counter++;
 
@@ -373,13 +373,13 @@ public class ValidationUtils {
                 counter=counter+smallerList.get(i).size();
             }
 
-            LOGGER.info("TOTAL TESTS : "+counter+" record :"+(i+1));
+            LOGGER.debug("TOTAL TESTS : "+counter+" record :"+(i+1));
 
             if(failedcounter==0)
-                LOGGER.info("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
+                LOGGER.debug("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
             else
             {
-                LOGGER.info("FAILED TESTS : "+failedcounter+" record:"+(i+1));
+                LOGGER.debug("FAILED TESTS : "+failedcounter+" record:"+(i+1));
 
             }
             fullFailedCounter=fullFailedCounter+failedcounter;
