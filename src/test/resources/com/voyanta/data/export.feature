@@ -79,11 +79,11 @@ Feature: Checking the export functionality
   Examples:
 
     | ExpectedFile                                 | Entity              | primarykey              | NodeList         |   
-    | _ACCOUNTING_-Account Activity.xml            | ACCOUNTING          | IDENTITY                | DSYS1            |
+#    | _ACCOUNTING_-Account Activity.xml            | ACCOUNTING          | IDENTITY                | DSYS1            |
     | _AXISAFFECT_-Asset.xml                       | AXISAFFECT          | IDENTITY                | DSYS1, DSTART    |
     | _COMPANY_-Investment.XML                     | COMPANY             | IDCOMPANY               | DSYS1            |
     | _LEASE_-Lease.xml                            | LEASE               | IDLEASE                 | DSYS1            | 
-    | _LEASEEVENT_-Recurring Billing               | LEASEEVENT          | IDLEASE                 | DSYS1            | 
+    | _LEASEEVENT_-Recurring Billing.xml               | LEASEEVENT          | IDLEASE                 | DSYS1            |
     | _LEASEKEYDATE_-Lease.xml                     | LEASEKEYDATE        | IDLEASE                 | DSYS1            | 
     | _LEASEREBILL_-Recovery.xml                   | LEASEREBILL         | IDLEASE                 | DSYS1            | 
     | _LEASETURNOVERSLICE_-Sales Breakpoint.xml    | LEASETURNOVERSLICE  | IDLEASE                 | DSYS1            |
@@ -94,7 +94,7 @@ Feature: Checking the export functionality
     | _PROPERTY_-Asset.xml                         | PROPERTY            | IDPROPERTY              | DSYS1            |
     | _REFACCOUNT_-Account.xml                     | REF_ACCOUNT         | IDACCOUNT               |                  |
     | _REFOPEXBUDHEAD_-Account.xml                 | REF_OPEXBUDHEAD     | IDACCOUNT               |                  |
-    | _REFWKBUDHEAD_-Account                       | REF_WKBUDHEAD       | IDACCOUNT               |                  |
+    | _REFWKBUDHEAD_-Account.xml                       | REF_WKBUDHEAD       | IDACCOUNT               |                  |
     | _RENTREVIEW_-Rent Escalation.xml             | RENTREVIEW          | IDPROPERTY              | DSYS1            |
     | _TENANT_-Legal Entity Tenant.xml             | TENANT              | IDTENANT                | DSYS1            |
     | _UNIT_-Unit.xml                              | UNIT                | IDUNIT                  | DSYS1            |
