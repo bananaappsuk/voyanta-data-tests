@@ -7,15 +7,17 @@ import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
 import com.voyanta.data.utils.utils.FileSearch;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.runtime.junit.FeatureRunner;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -117,12 +119,12 @@ public class DataModelSteps {
     }
 
     @When("^the data is loaded from actual file with root '(.*)', header '(.*)' and primary key '(.*)'$")
-    public void the_data_is_loaded_from_actual_file(String root,String header,String primaryKey) throws Throwable {
+    public void the_data_is_loaded_from_expected_file(String root, String header, String primaryKey) throws Throwable {
         expExportData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, root, header), primaryKey);
     }
 
     @When("^the data is loaded from expected file with root '(.*)', header '(.*)' and primary key '(.*)'$")
-    public void the_data_is_loaded_from_expected_file(String root,String header,String primaryKey) throws Throwable {
+    public void the_data_is_loaded_from_actual_file(String root, String header, String primaryKey) throws Throwable {
         actualExportData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1, root, header),primaryKey);
     }
 
@@ -169,8 +171,8 @@ public class DataModelSteps {
     @Given("^data is loaded with entity name '(.*)' with primary key '(.*)'$")
     public void data_is_loaded_with_entity_name__with_primary_key_AssetReference(String entity,String primaryKey) throws Throwable {
         this.primaryKey = primaryKey;
-        the_data_is_loaded_from_actual_file(entity+"_EXTRACT",entity,primaryKey);
-        the_data_is_loaded_from_expected_file(entity+"_EXTRACT",entity,primaryKey);
+        the_data_is_loaded_from_expected_file(entity + "_EXTRACT", entity, primaryKey);
+        the_data_is_loaded_from_actual_file(entity + "_EXTRACT", entity, primaryKey);
 
     }
 
@@ -178,5 +180,17 @@ public class DataModelSteps {
     public void both_files_should_have_same_set_of_data() throws Throwable {
         both_files_should_have_same_set_of_data(primaryKey);
 
+    }
+
+    @And("^ignore the validation taking today's value for '(.*)'$")
+    public void ignore_the_validation_taking_today_s_value_for(String columns) throws Throwable {
+        String replaceValue;
+        if(!columns.equals("")) {
+            for (String column:columns.split(","))
+            {
+                replaceValue = (new SimpleDateFormat("yyyy-MM-dd")).format((new Date()));
+                expExportData=VXMLUtils.replaceValueForColumn(expExportData,column.trim(),replaceValue);
+            }
+        }
     }
 }

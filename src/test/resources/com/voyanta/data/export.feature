@@ -73,7 +73,7 @@ Feature: Checking the export functionality
     Given all the files are saved under 'TalianceExport' folder
     Given an exported file exists with name '<ExpectedFile>'
     And data is loaded with entity name '<Entity>' with primary key '<primarykey>'
-    And ignore the validation taking today's value for <NodeList>
+    And ignore the validation taking today's value for '<NodeList>'
     Then both files should have same set of data
 
   Examples:

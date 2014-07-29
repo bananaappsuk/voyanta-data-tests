@@ -18,11 +18,13 @@ package com.voyanta.data;
     import com.thoughtworks.xstream.io.HierarchicalStreamReader;
     import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
     import com.voyanta.data.utils.VHashMap;
+    import org.apache.log4j.Logger;
     import sun.management.resources.agent_ko;
 
     import java.util.Map;
 
     public class VXMLUtils {
+        static Logger LOGGER = Logger.getLogger(VXMLUtils.class);
 
         public static List<HashMap> sortData(List<HashMap> extractedMap1,String key)
         {
@@ -50,6 +52,18 @@ package com.voyanta.data;
             {
                 System.out.println(hashMap);
             }
+        }
+
+        public static List<HashMap> replaceValueForColumn(List<HashMap> actualExportData, String column, String replaceValue) {
+
+
+            for(HashMap record:actualExportData)
+            {
+                LOGGER.info("Replacing column :"+column+" with new value :"+replaceValue);
+                record.remove(column);
+                record.put(column,replaceValue);
+            }
+            return actualExportData;
         }
 
         public static class MapEntryConverter implements Converter {
