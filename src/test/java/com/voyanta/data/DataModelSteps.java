@@ -107,6 +107,7 @@ public class DataModelSteps {
 //----------------------------------------------------------------------//
     @Given("^a file with name '(.*)' is existing with expected xml data$")
     public void a_file_with_name_existing(String fileName) throws Throwable {
+        LOGGER.info("Checking for file with name :"+fileName);
         xml = DBUtils.loadSQLFile(boxFolder+exportExpectedFolder+fileName);
         Assert.assertNotNull(xml);
 
@@ -114,6 +115,7 @@ public class DataModelSteps {
 
     @Given("^a file with name '(.*)' is existing with actual xml data$")
     public void a_file_with_name_Actual_File_folder(String fileName) throws Throwable {
+        LOGGER.info("Checking for file with name :"+fileName);
         xml1 = DBUtils.loadSQLFile(boxFolder + exportActualFolder + fileName);
         Assert.assertNotNull(xml1);
     }

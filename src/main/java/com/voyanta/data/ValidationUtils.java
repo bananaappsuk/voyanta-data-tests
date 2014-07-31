@@ -360,7 +360,7 @@ public class ValidationUtils {
             HashMap currentRecord = getRecordWithKey(biggerList,matchingKey,value,primaryKeys);
             if(currentRecord==null)
             {
-                LOGGER.info("No record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+                LOGGER.info("FAILED STEP: No record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
                 failedcounter++;
             }
             else
@@ -376,10 +376,10 @@ public class ValidationUtils {
             LOGGER.debug("TOTAL TESTS : "+counter+" record :"+(i+1));
 
             if(failedcounter==0)
-                LOGGER.debug("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
+                LOGGER.debug("TESTS PASSED AT DATA LEVEL VALIDATION for record:"+(i+1));
             else
             {
-                LOGGER.debug("FAILED TESTS : "+failedcounter+" record:"+(i+1));
+                LOGGER.info("FAILED TESTS : "+failedcounter+" record:"+(i+1));
 
             }
             fullFailedCounter=fullFailedCounter+failedcounter;
@@ -401,12 +401,12 @@ public class ValidationUtils {
             String key = iter1.next();
             // Check if the current value is a key in the 2nd map
             if (!B.containsKey(key) ){
-                LOGGER.info("This Key not available in expected record:"+key);
+                LOGGER.info("FAILED STEP: This Key not available in expected record:"+key);
                 failedcounter ++;
             }
             else if (!A.get(key).equals(B.get(key)) )
             {
-                LOGGER.info("Column name :" + key.toString() + " Actual Value :'" + A.get(key) + "' Expected Value :'" + B.get(key) + "'");
+                LOGGER.info("FAILED STEP: Column name :" + key.toString() + " Actual Value :'" + A.get(key) + "' Expected Value :'" + B.get(key) + "'");
                 //                    LOGGER.info("Expected available:"+excelMap.get(key));
                 failedcounter ++;
             }
