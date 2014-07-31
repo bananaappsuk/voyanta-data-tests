@@ -28,8 +28,13 @@ package com.voyanta.data;
 
         public static List<HashMap> sortData(List<HashMap> extractedMap1,String key)
         {
-            Collections.sort(extractedMap1,new ProductProductIdComparator(key));
-            return extractedMap1;
+            if(extractedMap1.get(0).containsKey(key)) {
+                Collections.sort(extractedMap1, new ProductProductIdComparator(key));
+                return extractedMap1;
+            }
+            else
+                throw new RuntimeException("The key provided :"+key+" is not a valid key in the given xml");
+
         }
 
         public static List<HashMap> getXMLData(String xml,String root,String child)
