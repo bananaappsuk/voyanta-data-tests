@@ -125,11 +125,11 @@ public class DataUnitTests {
     public void verifyXMLFileFound()
     {
         String xml = DBUtils.loadSQLFile("/Users/sriramangajala/Box Sync/QA/Automation Test/Export/expectedFiles/BUILDING-Asset.xml");
-        List<HashMap> expData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "BUILDING_EXTRACT", "BUILDING"),"AssetReference");
+        List<HashMap> expData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "BUILDING_EXTRACT", "BUILDING"),"AssetReference","");
         VXMLUtils.printData(expData);
 
         String xml1 = DBUtils.loadSQLFile("/Users/sriramangajala/Box Sync/QA/Automation Test/Export/actualFiles/BUILDING-Asset_1.xml");
-        List<HashMap> actData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1,"BUILDING_EXTRACT", "BUILDING"),"AssetReference");
+        List<HashMap> actData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1,"BUILDING_EXTRACT", "BUILDING"),"AssetReference","");
         VXMLUtils.printData(actData)  ;
         ValidationUtils.compareTwoThings(actData,expData,"AssetReference");
 
@@ -139,11 +139,11 @@ public class DataUnitTests {
     public void verifyXMLLease()
     {
         String xml = DBUtils.loadSQLFile("/Users/sriramangajala/Box Sync/QA/Automation Test/Export/expectedFiles/LEASE-Lease.xml");
-        List<HashMap> expData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "LEASE_EXTRACT", "LEASE"),"LeaseReference");
+        List<HashMap> expData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "LEASE_EXTRACT", "LEASE"),"LeaseReference","");
     //    VXMLUtils.printData(expData);
 
         String xml1 = DBUtils.loadSQLFile("/Users/sriramangajala/Box Sync/QA/Automation Test/Export/actualFiles/LEASE-Lease.xml");
-        List<HashMap> actData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1,"LEASE_EXTRACT", "LEASE"),"LeaseReference");
+        List<HashMap> actData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1,"LEASE_EXTRACT", "LEASE"),"LeaseReference","");
       //  VXMLUtils.printData(actData)  ;
         ValidationUtils.compareTwoThings(actData,expData,"LeaseReference");
 
@@ -155,9 +155,9 @@ public class DataUnitTests {
 
 
         String xml = DBUtils.loadSQLFile("/Users/sriramangajala/Box Sync/QA/Automation Test/Export/expectedFiles/DEVELOPMENT-Development.xml");
-        List<HashMap> expData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "DEVELOPMENT_EXTRACT","DEVELOPMENT"),"AssetReference");
+        List<HashMap> expData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "DEVELOPMENT_EXTRACT","DEVELOPMENT"),"AssetReference","");
         String xml1 = DBUtils.loadSQLFile("/Users/sriramangajala/Box Sync/QA/Automation Test/Export/actualFiles/DEVELOPMENT-Development.xml");
-        List<HashMap> actData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "DEVELOPMENT_EXTRACT","DEVELOPMENT"),"AssetReference");
+        List<HashMap> actData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, "DEVELOPMENT_EXTRACT","DEVELOPMENT"),"AssetReference","");
         ValidationUtils.compareTwoThings(actData,expData,"AssetReference");
     }
 

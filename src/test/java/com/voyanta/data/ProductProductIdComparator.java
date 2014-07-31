@@ -11,15 +11,19 @@ import java.util.Map;
 public class ProductProductIdComparator implements Comparator<Map>
 {
     String key;
+    String key1=null;
     public ProductProductIdComparator(String key)
     {
         this.key = key;
+        this.key1=key1;
     }
 
     @Override
     public int compare(Map o1, Map o2) {
         if(o1.get(key).hashCode()>o2.get(key).hashCode())
-            return 1;
+//            if(key1==null)
+                return 1;
+//            return 1;
         else if(o1.get(key).hashCode()<o2.get(key).hashCode())
             return -1;
         else

@@ -26,10 +26,12 @@ package com.voyanta.data;
     public class VXMLUtils {
         static Logger LOGGER = Logger.getLogger(VXMLUtils.class);
 
-        public static List<HashMap> sortData(List<HashMap> extractedMap1,String key)
+        public static List<HashMap> sortData(List<HashMap> extractedMap1,String key,String key1)
         {
             if(extractedMap1.get(0).containsKey(key)) {
                 Collections.sort(extractedMap1, new ProductProductIdComparator(key));
+                if(!key1.equals(""))
+                    Collections.sort(extractedMap1, new ProductProductIdComparator(key1));
                 return extractedMap1;
             }
             else

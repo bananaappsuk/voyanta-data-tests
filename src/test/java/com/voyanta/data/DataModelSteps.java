@@ -119,13 +119,13 @@ public class DataModelSteps {
     }
 
     @When("^the data is loaded from actual file with root '(.*)', header '(.*)' and primary key '(.*)'$")
-    public void the_data_is_loaded_from_expected_file(String root, String header, String primaryKey) throws Throwable {
-        expExportData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, root, header), primaryKey);
+    public void the_data_is_loaded_from_expected_file(String root, String header, String primaryKey,String secondaryKey) throws Throwable {
+        expExportData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml, root, header), primaryKey,secondaryKey);
     }
 
     @When("^the data is loaded from expected file with root '(.*)', header '(.*)' and primary key '(.*)'$")
-    public void the_data_is_loaded_from_actual_file(String root, String header, String primaryKey) throws Throwable {
-        actualExportData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1, root, header),primaryKey);
+    public void the_data_is_loaded_from_actual_file(String root, String header, String primaryKey,String secondaryKey) throws Throwable {
+        actualExportData = VXMLUtils.sortData(VXMLUtils.getXMLData(xml1, root, header),primaryKey,secondaryKey);
     }
 
 
@@ -168,11 +168,11 @@ public class DataModelSteps {
 
 
 
-    @Given("^data is loaded with entity name '(.*)' with primary key '(.*)'$")
-    public void data_is_loaded_with_entity_name__with_primary_key_AssetReference(String entity,String primaryKey) throws Throwable {
+    @Given("^data is loaded with entity name '(.*)' with primary key '(.*)' and '(.*)'$")
+    public void data_is_loaded_with_entity_name__with_primary_key_AssetReference(String entity,String primaryKey,String secondaryKey) throws Throwable {
         this.primaryKey = primaryKey;
-        the_data_is_loaded_from_expected_file(entity + "_EXTRACT", entity, primaryKey);
-        the_data_is_loaded_from_actual_file(entity + "_EXTRACT", entity, primaryKey);
+        the_data_is_loaded_from_expected_file(entity + "_EXTRACT", entity, primaryKey,secondaryKey);
+        the_data_is_loaded_from_actual_file(entity + "_EXTRACT", entity, primaryKey,secondaryKey);
 
     }
 
