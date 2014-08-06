@@ -67,7 +67,7 @@ public class UIStepDefs {
         PageFactory.initElements(driver, dataManager);
         dataManager.waitTill(driver,"Validating");
         dataManager.waitTill(driver,"Approving");
-        VUtils.waitFor(30);
+        VUtils.waitFor(20);
         dataManager.go_to_History();
         dataManager.setDriver(driver);
 

@@ -17,7 +17,7 @@ public class WaitUtils {
     public static void waitForElementShown(WebDriver driver, By by) {
 
         LOGGER.info("Started waiting for the Element Visible happen...");
-        WebDriverWait webDriverWait = new WebDriverWait(driver,90);
+        WebDriverWait webDriverWait = new WebDriverWait(driver,30);
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by));
         LOGGER.info("Waiting over...");
 
@@ -25,9 +25,9 @@ public class WaitUtils {
 
     public static void waitForTextIsNotPresentInElement(WebDriver driver, By by, String text) {
         LOGGER.info("Started waiting for the text to be shown...");
-        WebDriverWait webDriverWait = new WebDriverWait(driver,90);
+        WebDriverWait webDriverWait = new WebDriverWait(driver,30);
         int i=0;
-        while(driver.findElement(by).getText().contains(text)&&i<90)
+        while(driver.findElement(by).getText().contains(text)&&i<30)
         {
             VUtils.waitFor(1);
             i++;
