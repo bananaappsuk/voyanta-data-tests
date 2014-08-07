@@ -365,7 +365,7 @@ public class ValidationUtils {
             }
             else
             {
-                LOGGER.debug("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+                LOGGER.info("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
 
                 counter++;
 

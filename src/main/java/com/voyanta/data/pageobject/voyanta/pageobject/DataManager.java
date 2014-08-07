@@ -139,6 +139,7 @@ public class DataManager extends BaseClass{
     }
 
     public void waitTill(WebDriver driver,String Text) {
+        if(driver.findElement(By.xpath("//tr[contains(@class,'item-row')]")).getText().contains("secs"))
         WaitUtils.waitForTextIsNotPresentInElement(driver,By.xpath("//tr[contains(@class,'item-row')]"),Text);
     }
 }
