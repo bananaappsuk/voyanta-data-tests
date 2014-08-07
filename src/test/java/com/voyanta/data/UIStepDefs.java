@@ -35,7 +35,7 @@ public class UIStepDefs {
     static String propertiesFileName = "src/main/resources/";
     String fileName ;
     static Logger LOGGER = Logger.getLogger(UIStepDefs.class);
-    @Before("~@export")
+    @Before("~@nobrowser")
     public static void driverUp() throws MalformedURLException, InterruptedException {
 
 ////	   System.setProperty("webdri
