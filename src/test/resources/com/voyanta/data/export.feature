@@ -58,18 +58,18 @@ Feature: Checking the export functionality
     Given all the files are saved under 'TalianceExport' folder
     Given an exported file exists with name '<ExpectedFile>'
     And data is loaded with entity name '<Entity>' with primary key '<primarykey>' and '<secondarykey>'
-    And ignore the validation taking today's value for '<NodeList>'
+    And ignore the validation taking today's value for '<currentDateColumn>'
     Then both files should have same set of data
 
   Examples:
 
-    | ExpectedFile                                 | Entity              | primarykey              | NodeList         |secondarykey|
+    | ExpectedFile                                 | Entity              | primarykey              | currentDateColumn         |secondarykey|
     | _ACCOUNTING_-Account Activity.xml            | ACCOUNTING          | IDENTITY                | DSYS1            |            |
     | _AXISAFFECT_-Asset.xml                       | AXISAFFECT          | IDENTITY                | DSYS1, DSTART    |IDAXIS      |
     | _COMPANY_-Investment.XML                     | COMPANY             | IDCOMPANY               | DSYS1            |            |
     | _LEASE_-Lease.xml                            | LEASE               | IDLEASE                 | DSYS1            ||
     | _LEASEEVENT_-Recurring Billing.xml               | LEASEEVENT          | IDLEASE                 | DSYS1            ||
-    | _LEASEKEYDATE_-Lease.xml                     | LEASEKEYDATE        | IDLEASE                 | DSYS1            ||
+    | _LEASEKEYDATE_-Lease.xml                     | LEASEKEYDATE        | IDLEASE                 | DSYS1            |IDKEYDATETYPE,CORIGINE|
     | _LEASEREBILL_-Recovery.xml                   | LEASEREBILL         | IDLEASE                 | DSYS1            ||
     | _LEASETURNOVERSLICE_-Sales Breakpoint.xml    | LEASETURNOVERSLICE  | IDLEASE                 | DSYS1            ||
     | _OPEXBUDGET_-Account Activity.XML            | OPEXBUDGET          | IDPROPERTY              | DSYS1            ||

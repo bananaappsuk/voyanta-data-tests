@@ -28,10 +28,16 @@ package com.voyanta.data;
 
         public static List<HashMap> sortData(List<HashMap> extractedMap1,String key,String key1)
         {
+            String keys[] = key1.split(",");
             if(extractedMap1.get(0).containsKey(key)) {
                 Collections.sort(extractedMap1, new ProductProductIdComparator(key));
-                if(!key1.equals(""))
-                    Collections.sort(extractedMap1, new ProductProductIdComparator(key1));
+                if(!keys[0].equals("")) {
+                    Collections.sort(extractedMap1, new ProductProductIdComparator(keys[0]));
+                        if(keys.length>1)
+                        {
+                            Collections.sort(extractedMap1, new ProductProductIdComparator(keys[1]));
+                        }
+                }
                 return extractedMap1;
             }
             else
