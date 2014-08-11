@@ -36,6 +36,8 @@ package com.voyanta.data;
                         if(keys.length>1)
                         {
                             Collections.sort(extractedMap1, new ProductProductIdComparator(keys[1]));
+                            if(keys.length>2)
+                                Collections.sort(extractedMap1, new ProductProductIdComparator(keys[2]));
                         }
                 }
                 return extractedMap1;
@@ -57,6 +59,10 @@ package com.voyanta.data;
             //  System.out.println(xml);
             List<HashMap> extractedMap = (List<HashMap>) magicApi.fromXML(xml);
 
+            if(extractedMap.size()==0)
+            {
+                throw new RuntimeException("The data from the xml file is not loaded, please check your file");
+            }
             return extractedMap;
         }
 
