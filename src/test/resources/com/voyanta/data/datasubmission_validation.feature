@@ -85,13 +85,13 @@ Feature: Data Submission Test for validating the Data at cell level
     And the Edited data from DST is collected and saved as expected data
     When user uploads the Data from 'UI' with file '<FileName>'
     And data is collected from database with query '<QueryName>'
-    Then the uploaded data from DST should match with database tables
+    Then the uploaded data from DST should match with database tables sorted with '<matchingKeys>'
 
   Examples:
 
-    | FileName                    | QueryName              | additionalColumn | existingColumn |
+    | FileName                    | QueryName              | additionalColumn | existingColumn |matchingKeys|
 #    | Building.xlsx               | Building.sql           | AssetActive      | Active         |
-    | Development.xlsx            | Development.sql        |                  |                |
+    | Development.xlsx            | Development.sql        |                  |                |    developmentReference       |
 #    | Legal Entity Vendor.xlsx    | LegalEntityVendor.sql  |                  |                |
 #    | Investment.xlsx             | Investment.sql         |                  |                |
 #    | Account.xlsx                | Account.sql            |                  |                |
