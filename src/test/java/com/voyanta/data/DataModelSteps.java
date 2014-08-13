@@ -31,6 +31,7 @@ public class DataModelSteps {
     String dataSheet;
     String exportExpectedFolder;
     String exportActualFolder;
+    String editedTestDataFolder;
     List<VHashMap> dataBaseData;
     List<VHashMap> excelSheetData;
     Logger LOGGER = Logger.getLogger(DataModelSteps.class);
@@ -53,12 +54,14 @@ public class DataModelSteps {
             boxFolder = PropertiesLoader.getProperty("mac_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("mac_testDataFolder");
             SQLFolder = PropertiesLoader.getProperty("mac_SQLFolder");
+            editedTestDataFolder = PropertiesLoader.getProperty("mac_editedTestDataFolder");
         }
         else
         {
             boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
             testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
             SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
+            editedTestDataFolder = PropertiesLoader.getProperty("windows_editedTestDataFolder");
         }
         dataSheet=null;
         dataBaseData=null;
@@ -74,6 +77,13 @@ public class DataModelSteps {
         excelFolder = FileSearch.findFile(datasheet, new File(boxFolder+testDataFolder));
         Assert.assertTrue(excelFolder.getAbsolutePath().contains(datasheet));
     }
+    @Given("^The Edited DataSheet exists in the QA Box with name '(.*)'$")
+    public void the_Edited_DataSheet_exits_in_the_QA_Box_with_name(String datasheet) throws Throwable {
+        this.dataSheet = datasheet;
+        LOGGER.info("Searching for the file :"+datasheet+" in folder :"+boxFolder+editedTestDataFolder);
+        excelFolder = FileSearch.findFile(datasheet, new File(boxFolder+editedTestDataFolder));
+        Assert.assertTrue(excelFolder.getAbsolutePath().contains(datasheet));
+    }
 
     @Given("^the data from DST is collected and saved as expected data$")
     public void the_datasheet_data_is_saved() throws Throwable {
@@ -82,6 +92,12 @@ public class DataModelSteps {
         Assert.assertTrue("Checking if atleast one row is returned from excel sheet",excelSheetData.size()>0);
     }
 
+    @Given("^the Edited data from DST is collected and saved as expected data$")
+    public void the_edited_datasheet_data_is_saved() throws Throwable {
+        LOGGER.info("Collecting data from spreadsheet...");
+        excelSheetData = dataSheetsView.getExcelFileDataInHashMap(boxFolder+editedTestDataFolder,dataSheet,"0");
+        Assert.assertTrue("Checking if atleast one row is returned from excel sheet",excelSheetData.size()>0);
+    }
 
     @When("^data is collected from database with query '(.*)'$")
     public void data_should_be_saved_in_database(String SQLQueryName) throws Throwable {
@@ -140,7 +156,7 @@ public class DataModelSteps {
     public void all_the_files_are_saved_under_folder(String folderLocation){
         if(System.getProperty("os.name").toLowerCase().contains("mac"))
         {
-          if(folderLocation=="StandartExport"){
+          if(folderLocation.equalsIgnoreCase("StandartExport")){
             exportExpectedFolder=PropertiesLoader.getProperty("mac_ExportExpectedFolder");
             exportActualFolder =PropertiesLoader.getProperty("mac_ExportActualFolder");}
           else 
