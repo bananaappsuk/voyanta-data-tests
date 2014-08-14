@@ -67,24 +67,24 @@ Feature: Checking the export functionality
     | ExpectedFile                              | Entity             | primarykey | currentDateColumn | secondarykey           |
 #    | _ACCOUNTING_-Account Activity.xml         | ACCOUNTING         | IDENTITY   | DSYS1             |                        |
     | _AXISAFFECT_-Asset.xml                    | AXISAFFECT         | IDENTITY   | DSYS1, DSTART     | IDAXIS                 |
-#    | _COMPANY_-Investment.XML                  | COMPANY            | IDCOMPANY  | DSYS1             |                        |
-#    | _LEASE_-Lease.xml                         | LEASE              | IDLEASE    | DSYS1             |                        |
-#    | _LEASEEVENT_-Recurring Billing.xml        | LEASEEVENT         | IDLEASE    | DSYS1             |                        |
-#    | _LEASEKEYDATE_-Lease.xml                  | LEASEKEYDATE       | IDLEASE    | DSYS1             | IDKEYDATETYPE,CORIGINE |
-#    | _LEASEREBILL_-Recovery.xml                | LEASEREBILL        | IDLEASE    | DSYS1             |                        |
-#    | _LEASETURNOVERSLICE_-Sales Breakpoint.xml | LEASETURNOVERSLICE | IDLEASE    | DSYS1             |                        |
+    | _COMPANY_-Investment.XML                  | COMPANY            | IDCOMPANY  | DSYS1             |                        |
+    | _LEASE_-Lease.xml                         | LEASE              | IDLEASE    | DSYS1             |                        |
+    | _LEASEEVENT_-Recurring Billing.xml        | LEASEEVENT         | IDLEASE    | DSYS1             | DSTART,IDEVENT,MAMOUNT |
+    | _LEASEKEYDATE_-Lease.xml                  | LEASEKEYDATE       | IDLEASE    | DSYS1             | IDKEYDATETYPE,CORIGINE,DDATE |
+    | _LEASEREBILL_-Recovery.xml                | LEASEREBILL        | IDLEASE    | DSYS1             |                        |
+    | _LEASETURNOVERSLICE_-Sales Breakpoint.xml | LEASETURNOVERSLICE | IDLEASE    | DSYS1             |                        |
 #    | _OPEXBUDGET_-Account Activity.XML         | OPEXBUDGET         | IDPROPERTY | DSYS1             |                        |
-#    | _OWNERSHIP_-Asset.xml                     | OWNERSHIP          | IDPROPERTY | DSYS1             |                        |
-#    | _OWNERSHIP_-Development.xml               | OWNERSHIP          | IDPROPERTY | DSYS1             |                        |
-#    | _PLAINVAL_-Asset Valuation.xml            | PLAINVAL           | IDPROPERTY | DSYS1             |                        |
-#    | _PROPERTY_-Asset.xml                      | PROPERTY           | IDPROPERTY | DSYS1             |                        |
-#    | _REFACCOUNT_-Account.xml                  | REF_ACCOUNT        | IDACCOUNT  |                   |                        |
-#    | _REFOPEXBUDHEAD_-Account.xml              | REF_OPEXBUDHEAD    | CCODE      |                   |                        |
-#    | _REFWKBUDHEAD_-Account.xml                | REF_WKBUDHEAD      | CCODE      |                   |                        |
-#    | _RENTREVIEW_-Rent Escalation.xml          | RENTREVIEW         | IDLEASE    | DSYS1             | DRENTREVIEW            |
-#    | _TENANT_-Legal Entity Tenant.xml          | TENANT             | IDTENANT   | DSYS1             |                        |
-#    | _UNIT_-Unit.xml                           | UNIT               | IDUNIT     | DSYS1             |                        |
-#    | _UNITEXPENSE_-Unit.xml                    | UNITEXPENSE        | IDUNIT     | DSYS1             |                        |
-#    | _UNITMKTVALUE_-Unit.xml                   | UNITMKTVALUE       | IDUNIT     | DSYS1, DMKTVALUE  |                        |
-#    | _UNITOCC_-Unit.xml                        | UNITOCC            | IDUNIT     | DSYS1             |                        |
+    | _OWNERSHIP_-Asset.xml                     | OWNERSHIP          | IDPROPERTY | DSYS1             |                        |
+    | _OWNERSHIP_-Development.xml               | OWNERSHIP          | IDPROPERTY | DSYS1             |                        |
+    | _PLAINVAL_-Asset Valuation.xml            | PLAINVAL           | IDPROPERTY | DSYS1             |                        |
+    | _PROPERTY_-Asset.xml                      | PROPERTY           | IDPROPERTY | DSYS1             |                        |
+    | _REFACCOUNT_-Account.xml                  | REF_ACCOUNT        | IDACCOUNT  |                   |                        |
+    | _REFOPEXBUDHEAD_-Account.xml              | REF_OPEXBUDHEAD    | CCODE      |                   |                        |
+    | _REFWKBUDHEAD_-Account.xml                | REF_WKBUDHEAD      | CCODE      |                   |                        |
+    | _RENTREVIEW_-Rent Escalation.xml          | RENTREVIEW         | IDLEASE    | DSYS1             | DRENTREVIEW            |
+    | _TENANT_-Legal Entity Tenant.xml          | TENANT             | IDTENANT   | DSYS1             |                        |
+    | _UNIT_-Unit.xml                           | UNIT               | IDUNIT     | DSYS1             |                        |
+    | _UNITEXPENSE_-Unit.xml                    | UNITEXPENSE        | IDUNIT     | DSYS1             |                        |
+    | _UNITMKTVALUE_-Unit.xml                   | UNITMKTVALUE       | IDUNIT     | DSYS1, DMKTVALUE  |                        |
+    | _UNITOCC_-Unit.xml                        | UNITOCC            | IDUNIT     | DSYS1             |                        |
 #    | _WKBUDGET_-Account Activity.xml           | WKBUDGET           | IDPROPERTY | DSYS1             |                        |
