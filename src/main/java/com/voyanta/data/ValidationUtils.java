@@ -43,7 +43,7 @@ public class ValidationUtils {
 //        return new TreeMap<String, Float>(yourMap);
 //    }
 
-    public static void compareColumnHeaders(List<VHashMap> excelSheetData, List<VHashMap> dataBaseData) {
+    public static void compareColumnHeaders(List<VHashMap> excelSheetData, List<VHashMap> dataBaseData, String[] matchingKey) {
 
 // int i = 0;
         int failcounter=0;
@@ -92,15 +92,25 @@ public class ValidationUtils {
                 }
                 else if (!dbMap.get(key).equals(excelMap.get(key)) )
                 {
-                    LOGGER.info("Column name :" + key.toString() + " Actual Value :'" + dbMap.get(key) + "' Expected Value :'" + excelMap.get(key) + "'");
+                    //ignore the "" cell coming from excel
+                    if(excelMap.get(key).equals(""))
+                    {
+                        LOGGER.info("Ignoring the cell with no value for column:"+key.toString());
+                    }
+                    else {
+                        LOGGER.info("Column name :" + key.toString() + " Actual Value :'" + dbMap.get(key) + "' Expected Value :'" + excelMap.get(key) + "'");
 //                    LOGGER.info("Expected available:"+excelMap.get(key));
-                    failedcounter ++;
+                        failedcounter++;
+                    }
                 }
                 counter++;
             }
 
             LOGGER.info("TOTAL TESTS : "+counter+" record :"+(i+1));
-
+            for(String key:matchingKey) {
+                if (!key.equals(""))
+                    LOGGER.info("Validating against the record found with key:" + key + " and value:" + dbMap.get(key));
+            }
             if(failedcounter==0)
                 LOGGER.info("NO TESTS FAILED AT DATA LEVEL VALIDATION record:"+(i+1));
             else

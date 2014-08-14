@@ -22,7 +22,7 @@ Feature: Data Submission Test for validating the Data at cell level
 
    Given The DataSheet exists in the QA Box with name '<FileName>'
    And the data from DST is collected and saved as expected data
-   When user uploads the Data from 'UI' with file '<FileName>'
+   When user uploads the new DST from 'UI' with file '<FileName>'
    And an additional column '<additionalColumn>' is mapped with '<existingColumn>'
    And the DST have passed through the Validations and Approvals
    And data is collected from database with query '<QueryName>'
@@ -71,27 +71,27 @@ Feature: Data Submission Test for validating the Data at cell level
    | Sales.xlsx                  | Sales.sql              |                  |                |
    | SalesBreakpoint.xlsx        | SalesBreakpoint.sql    |                  |                |
 
-  @done
+  @inprogress
   Scenario Outline: Upload the edit DST verify the data in Database
 
     Given The DataSheet exists in the QA Box with name '<FileName>'
     And the data from DST is collected and saved as expected data
-    When user uploads the Data from 'UI' with file '<FileName>'
+    When user uploads the new DST from 'UI' with file '<FileName>'
     And an additional column '<additionalColumn>' is mapped with '<existingColumn>'
     And the DST have passed through the Validations and Approvals
 #    And data is collected from database with query '<QueryName>'
 #    Then the uploaded data from DST should match with database tables
-    And The Edited DataSheet exists in the QA Box with name '<FileName>'
+    And The Edited DataSheet exists in the QA Box with name '<EditedFileName>'
     And the Edited data from DST is collected and saved as expected data
-    When user uploads the Data from 'UI' with file '<FileName>'
+    When user uploads the edit DST from 'UI' with file '<EditedFileName>'
     And data is collected from database with query '<QueryName>'
     Then the uploaded data from DST should match with database tables sorted with '<matchingKeys>'
 
   Examples:
 
-    | FileName                    | QueryName              | additionalColumn | existingColumn |matchingKeys|
+    | FileName       |EditedFileName             | QueryName              | additionalColumn | existingColumn |matchingKeys|
 #    | Building.xlsx               | Building.sql           | AssetActive      | Active         |
-    | Development.xlsx            | Development.sql        |                  |                |    developmentReference       |
+#    | Development.xlsx  | Development-Edit.xlsx         | Development.sql        |                  |                |    developmentReference       |
 #    | Legal Entity Vendor.xlsx    | LegalEntityVendor.sql  |                  |                |
 #    | Investment.xlsx             | Investment.sql         |                  |                |
 #    | Account.xlsx                | Account.sql            |                  |                |
@@ -113,7 +113,7 @@ Feature: Data Submission Test for validating the Data at cell level
 #    | Debt Participation.xlsx     | DebtParticipation.sql  |                  |                |
 #    | AccountActivity.xlsx        | AccountActivity.sql    |                  |                |
 #    | MarketStatistics.xlsx       | MarketStatistics.sql   |                  |                |
-#    | Assumption.xlsx             | Assumption.sql         |                  |                |
+    | Assumption.xlsx   |Assumption-Edit.xlsx           | Assumption.sql         |                  |                |Active,Object Type    |
 #    | AssumptionProfile.xlsx      | AssumptionProfile.sql  |                  |                |
 #    |  Asset Valuation.xlsx       | AssetValuation.sql     |                  |                |
 #    | GroundLease.xlsx            | GroundLease.sql        |                  |                |

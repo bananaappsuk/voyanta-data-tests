@@ -2,6 +2,7 @@ package com.voyanta.data;
 
 import com.voyanta.data.datamodel.DataSheetsView;
 import com.voyanta.data.datamodel.DatabaseView;
+import com.voyanta.data.pageobject.voyanta.pageobject.VUtils;
 import com.voyanta.data.utils.DBUtils;
 import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
@@ -108,18 +109,19 @@ public class DataModelSteps {
 
     @Then("^the uploaded data from DST should match with database tables$")
     public void data_in_all_the_cells_should_match() throws Throwable {
-      data_in_all_the_cells_should_matchwith_keys(null);
+      data_in_all_the_cells_should_matchwith_keys("");
 
     }
 
     @Then("^the uploaded data from DST should match with database tables sorted with '(.*)'$")
     public void data_in_all_the_cells_should_matchwith_keys(String keys) throws Throwable {
 
+        String[] modifiedkeys = VUtils.humaniseKeys(keys);
         excelSheetData = ValidationUtils.lowerCaseColumnsAndRemoveSpaces(excelSheetData);
         dataBaseData = ValidationUtils.lowerCaseColumnsAndRemoveSpaces(dataBaseData);
-            excelSheetData=VXMLUtils.sortData(excelSheetData,keys);
-            dataBaseData=VXMLUtils.sortData(dataBaseData,keys);
-        ValidationUtils.compareColumnHeaders(excelSheetData,dataBaseData);
+        excelSheetData=VXMLUtils.sortData(excelSheetData,modifiedkeys);
+        dataBaseData=VXMLUtils.sortData(dataBaseData,modifiedkeys);
+        ValidationUtils.compareColumnHeaders(excelSheetData,dataBaseData,modifiedkeys);
 
     }
 

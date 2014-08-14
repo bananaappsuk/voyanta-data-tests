@@ -85,17 +85,24 @@ package com.voyanta.data;
             return actualExportData;
         }
 
-        public static  List<VHashMap> sortData(List<VHashMap> extractedMap1, String keys) {
+        public static  List<VHashMap> sortData(List<VHashMap> extractedMap1, String[] keys) {
 
-            String keySet[] = keys.split(",");
 
-            for(String key:keySet )
+
+            for(String key:keys )
             {
                 if(!key.equals(""))
-                    Collections.sort(extractedMap1, new ProductProductIdComparator(key));
+                {
+                    key = key.toLowerCase();
+                    if(!extractedMap1.get(0).containsKey(key))
+                        throw new RuntimeException("Given Key not found "+key);
+
+                    Collections.sort((List<HashMap>) (Object) extractedMap1, new ProductProductIdComparator(key));
+                }
+
 
             }
-           return extractedMap1;
+           return (List<VHashMap>)(Object)extractedMap1;
 //            else
 //                throw new RuntimeException("The key provided :"+key+" is not a valid key in the given xml");
         }

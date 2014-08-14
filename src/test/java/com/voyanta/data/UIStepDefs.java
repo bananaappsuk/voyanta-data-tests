@@ -44,15 +44,18 @@ public class UIStepDefs {
 
     }
 
-    @When("^user uploads the Data from 'UI' with file '(.*)'$")
-    public void user_uploads_the_Data_from_UI(String fileName) throws Throwable {
+    @When("^user uploads the (.*) DST from 'UI' with file '(.*)'$")
+    public void user_uploads_the_Data_from_UI(String newFile,String fileName) throws Throwable {
         this.fileName = fileName;
 
         UploadPage uploadPage = new UploadPage();
         PageFactory.initElements(driver, uploadPage);
         driver.get(uploadPage.getURL());
         VUtils.waitFor(5);
-        uploadPage.selectFiles(PropertiesLoader.getProperty("windows_boxFolder")+PropertiesLoader.getProperty("windows_testDataFolder")+fileName);
+        if(newFile.equals("new"))
+            uploadPage.selectFiles(PropertiesLoader.getProperty("windows_boxFolder")+PropertiesLoader.getProperty("windows_testDataFolder")+fileName);
+        else
+            uploadPage.selectFiles(PropertiesLoader.getProperty("windows_boxFolder")+PropertiesLoader.getProperty("windows_editedTestDataFolder")+fileName);
 
 //        uploadPage.waitTillFileIsUploaded(driver);
         uploadPage.save();

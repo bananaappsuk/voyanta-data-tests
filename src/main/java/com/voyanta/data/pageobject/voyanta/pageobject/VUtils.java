@@ -14,4 +14,19 @@ public class VUtils {
 
         }
     }
+
+    public static String[] humaniseKeys(String keys) {
+        String[] modifiedKeys = keys.trim().split(",");
+      //  String[] modifiedKeys= new String[keys.split()];
+        int i=0;
+        for(String key:modifiedKeys)
+        {
+            modifiedKeys[i]=key.replace(" ","").trim().toLowerCase();
+            i++;
+        }
+        if(modifiedKeys.length==1)
+            return new String[]{""};
+        else
+            return modifiedKeys;
+    }
 }
