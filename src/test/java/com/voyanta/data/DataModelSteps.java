@@ -60,6 +60,7 @@ public class DataModelSteps {
         else
         {
             boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
+            boxFolder.replace("Adminstrator",System.getProperty("user.name"));
             testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
             SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
             editedTestDataFolder = PropertiesLoader.getProperty("windows_editedTestDataFolder");
@@ -220,5 +221,10 @@ public class DataModelSteps {
                 expExportData=VXMLUtils.replaceValueForColumn(expExportData,column.trim(),replaceValue);
             }
         }
+    }
+
+    @Given("^the data is deleted from database$")
+    public void the_data_is_deleted_from_database() throws Throwable {
+        System.out.print(databaseView.executeMultipleDBQuerysFromFile(boxFolder+SQLFolder+"DeleteAll.sql",10));
     }
 }

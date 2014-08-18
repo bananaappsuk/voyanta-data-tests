@@ -24,7 +24,7 @@ public class VUtils {
             modifiedKeys[i]=key.replace(" ","").trim().toLowerCase();
             i++;
         }
-        if(modifiedKeys.length==1)
+        if(modifiedKeys.length==0)
             return new String[]{""};
         else
             return modifiedKeys;

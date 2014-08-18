@@ -1,5 +1,6 @@
 package com.voyanta.data;
 
+import com.voyanta.data.datamodel.DatabaseView;
 import com.voyanta.data.pageobject.voyanta.SignInPageObject;
 import com.voyanta.data.utils.PropertiesLoader;
 import org.apache.log4j.Logger;
@@ -43,6 +44,10 @@ public class baseTest {
         PageFactory.initElements(driver, signInPage);
         signInPage.signIn(PropertiesLoader.getProperty("username"), PropertiesLoader.getProperty("password"));
         LOGGER.info("Test phase:"+System.getProperty("test_phase"));
+        String boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
+       // testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
+        String SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
+        System.out.print((new DatabaseView()).executeMultipleDBQuerysFromFile(boxFolder+SQLFolder+"DeleteAll.sql",10));
 
 //        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
 

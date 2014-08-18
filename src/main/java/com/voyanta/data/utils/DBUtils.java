@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by sriramangajala on 07/07/2014.
@@ -44,6 +45,65 @@ public class DBUtils {
         Statement statement = (Statement) conn.createStatement();
         return statement.executeQuery(query);
     }
+
+    public static int executeUpdate(String query) throws SQLException
+    {
+
+            Statement statement = null;
+            int rows = 0;
+            try {
+                statement = (Statement) conn.createStatement();
+                executeSqlScript(conn, new File(query));
+                return 0;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return 0;
+
+
+    }
+
+    public static void executeSqlScript(Connection conn, File inputFile) {
+
+        // Delimiter
+        String delimiter = ";";
+
+        // Create scanner
+        Scanner scanner;
+        try {
+            scanner = new Scanner(inputFile).useDelimiter(delimiter);
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+            return;
+        }
+
+        // Loop through the SQL file statements
+        Statement currentStatement = null;
+        while(scanner.hasNext()) {
+
+            // Get statement
+            String rawStatement = scanner.next() + delimiter;
+            try {
+                // Execute statement
+                currentStatement = (Statement) conn.createStatement();
+                LOGGER.info("Executing the query :"+rawStatement);
+                currentStatement.execute(rawStatement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                // Release resources
+                if (currentStatement != null) {
+                    try {
+                        currentStatement.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                currentStatement = null;
+            }
+        }
+    }
+
 
     public static ResultSet connectAndExecuteStatement(String dbuserName,String dbpassword,String url,String query) throws SQLException {
         connectToDataBase(dbuserName,dbpassword,url);
