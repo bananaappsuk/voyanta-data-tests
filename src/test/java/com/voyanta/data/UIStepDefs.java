@@ -76,9 +76,9 @@ public class UIStepDefs {
 //
     @After("~@export")
     public static void tearDown(Scenario scenario){
-        driver.close();
-        driver.quit();
-        driver=null;
+//        driver.close();
+//        driver.quit();
+//        driver=null;
         if(scenario.isFailed())
         {
             VUtils.captureScreen(scenario.getName());
