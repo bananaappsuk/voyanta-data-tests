@@ -1,28 +1,23 @@
 package com.voyanta.data;
 
 import com.voyanta.data.pageobject.voyanta.SignInPageObject;
-import com.voyanta.data.pageobject.voyanta.SimpleOnFailed;
 
 import com.voyanta.data.pageobject.voyanta.pageobject.DataManager;
 import com.voyanta.data.pageobject.voyanta.pageobject.UploadPage;
 import com.voyanta.data.pageobject.voyanta.pageobject.VUtils;
 import com.voyanta.data.utils.PropertiesLoader;
+import com.voyanta.data.voyanta.BrowserFactory;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.When;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
 
 /**
@@ -40,7 +35,7 @@ public class UIStepDefs {
 
 ////	   System.setProperty("webdri
 // ver.chrome.driver", "/Users/sriramangajala/Documents/Automated-UAT/voyanta-availablity-tests/src/main/resources/chromedriver 5");
-        driver=BrowserFactory.getDriver();
+        driver= BrowserFactory.getDriver();
 
     }
 
@@ -79,11 +74,16 @@ public class UIStepDefs {
         Assert.assertTrue("File uploaded but not Approved", dataManager.getFirstRowText().contains("Approved"));
     }
 //
-//    @After("~@export")
-//    public static void tearDown(){
-//        driver.close();
-//        driver.quit();
-//        driver=null;
-//    }
+    @After("~@export")
+    public static void tearDown(Scenario scenario){
+        driver.close();
+        driver.quit();
+        driver=null;
+        if(scenario.isFailed())
+        {
+            VUtils.captureScreen(scenario.getName());
+        }
+    }
+
 
 }

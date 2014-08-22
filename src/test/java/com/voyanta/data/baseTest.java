@@ -3,12 +3,11 @@ package com.voyanta.data;
 import com.voyanta.data.datamodel.DatabaseView;
 import com.voyanta.data.pageobject.voyanta.SignInPageObject;
 import com.voyanta.data.utils.PropertiesLoader;
+import com.voyanta.data.voyanta.BrowserFactory;
 import org.apache.log4j.Logger;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.net.MalformedURLException;
@@ -49,6 +48,7 @@ public class baseTest {
         String SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
         System.out.print((new DatabaseView()).executeMultipleDBQuerysFromFile(boxFolder+SQLFolder+"DeleteAll.sql",10));
 
+
 //        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
 
     }
@@ -59,4 +59,16 @@ public class baseTest {
         driver.quit();
         driver=null;
     }
+
+    public static void deleteExistingData()
+    {
+//        String boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
+//        String testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
+//        String SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
+//        String editedTestDataFolder = PropertiesLoader.getProperty("windows_editedTestDataFolder");
+//        String FileName = boxFolder+"/"+SQLFolder+"/"+SQLQueryName;
+//        dataBaseData = databaseView.getDataBaseRecordsFromFile(FileName,dataSheetsView.getNumberOfRecordsInExcel());
+//        Assert.assertTrue("Checking if atleast one row is returned from database", dataBaseData.size() > 0);
+    }
+
 }

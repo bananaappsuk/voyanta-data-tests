@@ -7,6 +7,8 @@ import com.voyanta.data.utils.DBUtils;
 import com.voyanta.data.utils.PropertiesLoader;
 import com.voyanta.data.utils.VHashMap;
 import com.voyanta.data.utils.utils.FileSearch;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -60,7 +62,6 @@ public class DataModelSteps {
         else
         {
             boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
-            boxFolder.replace("Adminstrator",System.getProperty("user.name"));
             testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
             SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
             editedTestDataFolder = PropertiesLoader.getProperty("windows_editedTestDataFolder");
@@ -220,6 +221,15 @@ public class DataModelSteps {
                 replaceValue = (new SimpleDateFormat("yyyy-MM-dd")).format((new Date()));
                 expExportData=VXMLUtils.replaceValueForColumn(expExportData,column.trim(),replaceValue);
             }
+        }
+    }
+
+    @After()
+    public static void tearDown(Scenario scenario){
+
+        if(scenario.isFailed())
+        {
+            VUtils.captureScreen(scenario.getName());
         }
     }
 
