@@ -26,19 +26,19 @@ public class BrowserFactory {
     {
         if(driver==null)
         {
-//            if(browserName!=null||browserName.equalsIgnoreCase("firefox"))
-//            {
-//                driver = new FirefoxDriver();
-//            }
-//            else {
-                Capabilities capabilities= DesiredCapabilities.firefox();
-                try {
-                    driver = new RemoteWebDriver(new URL("http://autotest4.voyanta.com:4444/wd/hub"),capabilities);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-//                driver = new FirefoxDriver();
-//            }
+            if(browserName!=null||browserName.equalsIgnoreCase("firefox"))
+            {
+                driver = new FirefoxDriver();
+            }
+            else {
+//                Capabilities capabilities= DesiredCapabilities.firefox();
+//                try {
+//                    driver = new RemoteWebDriver(new URL("http://autotest4.voyanta.com:4444/wd/hub"),capabilities);
+//                } catch (MalformedURLException e) {
+//                    e.printStackTrace();
+//                }
+                driver = new FirefoxDriver();
+            }
         }
 
         return driver;
