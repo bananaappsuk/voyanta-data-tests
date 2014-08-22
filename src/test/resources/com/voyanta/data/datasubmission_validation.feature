@@ -2,8 +2,8 @@
 Feature: Data Submission Test for validating the Data at cell level
 
 
-  Background:
-    Given the data is deleted from database
+#  Background:
+#    Given the data is deleted from database
   @ignore
   Scenario Outline: Data Submission Test to load the data and check the data uploaded matches the data from Database
 
