@@ -64,6 +64,10 @@ Feature: Checking the export functionality
 
   Examples:
 
+  
+
+
+
     | ExpectedFile                              | Entity             | primarykey | currentDateColumn | secondarykey           |
 #    | _ACCOUNTING_-Account Activity.xml         | ACCOUNTING         | IDENTITY   | DSYS1             |                        |
     | _AXISAFFECT_-Asset.xml                    | AXISAFFECT         | IDENTITY   | DSYS1, DSTART     | IDAXIS                 |
