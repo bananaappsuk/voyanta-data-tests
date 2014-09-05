@@ -295,15 +295,17 @@ public class ValidationUtils {
         }
         for(HashMap record:actualData)
         {
-            String recordValue = record.get(matchingKey).toString();
-            //System.out.println(record.get(matchingKey) + " WITH " + value.toString());
-            if(recordValue.equals(value.toString()))
-            {
-                i++;
-                if(isCorrectRecord(primaryKeys,recordValue,i))
-                    return record;
+            if(record.containsKey(matchingKey)) {
+                String recordValue = record.get(matchingKey).toString();
+                //System.out.println(record.get(matchingKey) + " WITH " + value.toString());
+                if (recordValue.equals(value.toString())) {
+                    i++;
+                    if (isCorrectRecord(primaryKeys, recordValue, i))
+                        return record;
 
+                }
             }
+
 
 
         }
@@ -336,6 +338,9 @@ public class ValidationUtils {
         List<HashMap> biggerList=null,smallerList=null;
         int counter=0,failedcounter=0,fullFailedCounter=0;
         String[] primaryKeys=null;
+        List<HashMap> temp=A;
+        A=B;
+        B=temp;
 
         if(A.size()>B.size())
         {
