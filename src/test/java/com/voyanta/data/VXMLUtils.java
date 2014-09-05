@@ -28,22 +28,26 @@ package com.voyanta.data;
 
         public static List<HashMap> sortData(List<HashMap> extractedMap1,String key,String key1)
         {
-            String keys[] = key1.split(",");
-            if(extractedMap1.get(0).containsKey(key)) {
-                Collections.sort(extractedMap1, new ProductProductIdComparator(key));
-                if(!keys[0].equals("")) {
-                    Collections.sort(extractedMap1, new ProductProductIdComparator(keys[0]));
-                        if(keys.length>1)
-                        {
+            try {
+                String keys[] = key1.split(",");
+                if (extractedMap1.get(0).containsKey(key)) {
+                    Collections.sort(extractedMap1, new ProductProductIdComparator(key));
+                    if (!keys[0].equals("")) {
+                        Collections.sort(extractedMap1, new ProductProductIdComparator(keys[0]));
+                        if (keys.length > 1) {
                             Collections.sort(extractedMap1, new ProductProductIdComparator(keys[1]));
-                            if(keys.length>2)
+                            if (keys.length > 2)
                                 Collections.sort(extractedMap1, new ProductProductIdComparator(keys[2]));
                         }
-                }
-                return extractedMap1;
+                    }
+                    return extractedMap1;
+                } else
+                    throw new RuntimeException("The key provided :" + key + " is not a valid key in the given xml");
             }
-            else
-                throw new RuntimeException("The key provided :"+key+" is not a valid key in the given xml");
+            catch (Exception e)
+            {
+                throw new RuntimeException("The key provided :" + key + " is not a valid key in the given xml");
+            }
 
         }
 

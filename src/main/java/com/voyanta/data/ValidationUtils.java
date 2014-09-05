@@ -365,25 +365,31 @@ public class ValidationUtils {
             failedcounter=0;
             Object value = smallerList.get(i).get(matchingKey);
 
-            primaryKeys[i] = value.toString();
-
-            HashMap currentRecord = getRecordWithKey(biggerList,matchingKey,value,primaryKeys);
-            if(currentRecord==null)
+            if(value==null)
             {
-                LOGGER.info("FAILED STEP: No record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+                LOGGER.info("FAILED STEP: No record found with key in either of the XMLs:"+matchingKey);
                 failedcounter++;
             }
-            else
-            {
-                LOGGER.info("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+            else {
+                primaryKeys[i] = value.toString();
 
-                counter++;
+                HashMap currentRecord = getRecordWithKey(biggerList, matchingKey, value, primaryKeys);
 
-                failedcounter = compareRecords(smallerList.get(i), currentRecord);
-                counter=counter+smallerList.get(i).size();
+
+                if (currentRecord == null) {
+                    LOGGER.info("FAILED STEP: No record found with key:" + matchingKey + " and value:" + smallerList.get(i).get(matchingKey));
+                    failedcounter++;
+                } else {
+                    LOGGER.info("Validating against the record found with key:" + matchingKey + " and value:" + smallerList.get(i).get(matchingKey));
+
+                    counter++;
+
+                    failedcounter = compareRecords(smallerList.get(i), currentRecord);
+                    counter = counter + smallerList.get(i).size();
+                }
             }
 
-            LOGGER.debug("TOTAL TESTS : "+counter+" record :"+(i+1));
+            LOGGER.debug("TOTAL TESTS : " + counter + " record :" + (i + 1));
 
             if(failedcounter==0)
                 LOGGER.debug("TESTS PASSED AT DATA LEVEL VALIDATION for record:"+(i+1));

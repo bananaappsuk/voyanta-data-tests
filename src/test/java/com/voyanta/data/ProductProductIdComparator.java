@@ -12,6 +12,7 @@ public class ProductProductIdComparator implements Comparator<Map>
 {
     String key;
     String key1=null;
+
     public ProductProductIdComparator(String key)
     {
         this.key = key;
@@ -20,6 +21,10 @@ public class ProductProductIdComparator implements Comparator<Map>
 
     @Override
     public int compare(Map o1, Map o2) {
+        if(o1.get(key)==null||o2.get(key)==null)
+        {
+            return 0;
+        }
         if(o1.get(key).hashCode()>o2.get(key).hashCode())
 //            if(key1==null)
                 return 1;
