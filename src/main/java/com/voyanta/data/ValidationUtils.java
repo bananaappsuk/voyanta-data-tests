@@ -395,11 +395,13 @@ public class ValidationUtils {
             }
             else
             {
-                LOGGER.info("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
+                LOGGER.debug("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
 
                 counter++;
 
                 failedcounter = compareRecords(smallerList.get(i), currentRecord);
+                if(failedcounter!=0)
+                    LOGGER.info("Validating against the record found with key:"+matchingKey+" and value:"+smallerList.get(i).get(matchingKey));
                 counter=counter+smallerList.get(i).size();
             }
 
