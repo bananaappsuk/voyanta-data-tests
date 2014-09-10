@@ -46,7 +46,7 @@ public class baseTest {
         String boxFolder = PropertiesLoader.getProperty("windows_boxFolder");
        // testDataFolder = PropertiesLoader.getProperty("windows_testDataFolder");
         String SQLFolder = PropertiesLoader.getProperty("windows_SQLFolder");
-        System.out.print((new DatabaseView()).executeMultipleDBQuerysFromFile(boxFolder+SQLFolder+"DeleteAll.sql",10));
+//        System.out.print((new DatabaseView()).executeMultipleDBQuerysFromFile(boxFolder+SQLFolder+"DeleteAll.sql",10));
 
 
 //        signInPage.waitForFirstPageToLoad(driver,(By.className("QvContent")));
