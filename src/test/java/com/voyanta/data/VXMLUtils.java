@@ -29,6 +29,7 @@ package com.voyanta.data;
         public static List<HashMap> sortData(List<HashMap> extractedMap1,String key,String key1)
         {
             String keys[] = key1.split(",");
+
             if(extractedMap1.get(0).containsKey(key)) {
                 Collections.sort(extractedMap1, new ProductProductIdComparator(key));
                 if(!keys[0].equals("")) {

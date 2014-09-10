@@ -295,12 +295,32 @@ public class ValidationUtils {
         }
         for(HashMap record:actualData)
         {
-            String recordValue = record.get(matchingKey).toString();
+            String recordValue;
+            if(value==null)
+            {
+                if(record.get(matchingKey)==null)
+                {
+                    LOGGER.info("The key "+matchingKey+" found in actual data:"+value);
+                    return record;
+                }
+              //  else
+                //    return null;
+            }
+            else if(record.get(matchingKey)==null)
+            {
+                if(value==null)
+                {
+                    LOGGER.info("The key "+matchingKey+" found in actual data:"+value);
+                    return record;
+                }
+               // else
+                 //   return null;
+            }
             //System.out.println(record.get(matchingKey) + " WITH " + value.toString());
-            if(recordValue.equals(value.toString()))
+            else if(record.get(matchingKey).toString().equals(value.toString()))
             {
                 i++;
-                if(isCorrectRecord(primaryKeys,recordValue,i))
+                if(isCorrectRecord(primaryKeys,record.get(matchingKey).toString(),i))
                     return record;
 
             }
@@ -364,7 +384,7 @@ public class ValidationUtils {
             counter=0;
             failedcounter=0;
             Object value = smallerList.get(i).get(matchingKey);
-
+            if(value!=null)
             primaryKeys[i] = value.toString();
 
             HashMap currentRecord = getRecordWithKey(biggerList,matchingKey,value,primaryKeys);
@@ -403,6 +423,10 @@ public class ValidationUtils {
 
         int failedcounter=0;
         Set<String> set1=A.keySet();
+        Set<String> set2=A.keySet();
+        Set<String> set3=B.keySet();
+
+        failedcounter = compareKeys(set2,set3);
 
         Iterator<String> iter1=set1.iterator();
 
@@ -410,11 +434,12 @@ public class ValidationUtils {
         {
             String key = iter1.next();
             // Check if the current value is a key in the 2nd map
-            if (!B.containsKey(key) ){
-                LOGGER.info("FAILED STEP: This Key not available in expected record:"+key);
-                failedcounter ++;
-            }
-            else if (!A.get(key).equals(B.get(key)) )
+           // if (!B.containsKey(key) ){
+             //   LOGGER.info("FAILED STEP: This Key not available in expected record:"+key);
+               // failedcounter ++;
+            //}
+            //else
+            if (!A.get(key).equals(B.get(key)) )
             {
                 LOGGER.info("FAILED STEP: Column name :" + key.toString() + " Actual Value :'" + A.get(key) + "' Expected Value :'" + B.get(key) + "'");
                 //                    LOGGER.info("Expected available:"+excelMap.get(key));
@@ -423,5 +448,36 @@ public class ValidationUtils {
             //counter++;
         }
         return failedcounter;
+    }
+
+    private static int compareKeys(Set<String> set2, Set<String> set3) {
+        int failures=0;
+        Iterator<String> iter1=set2.iterator();
+        String key;
+
+        while (iter1.hasNext())
+        {
+            key = iter1.next();
+            if(!set3.contains(key))
+            {
+                failures++;
+                LOGGER.info("FAILED STEP: This Key not available in expected record:"+key);
+
+            }
+        }
+        iter1=set3.iterator();
+
+        while (iter1.hasNext())
+        {
+            key = iter1.next();
+            if(!set2.contains(key))
+            {
+                failures++;
+                LOGGER.info("FAILED STEP: This Key not available in expected record:"+key);
+            }
+        }
+
+        return failures;
+
     }
 }

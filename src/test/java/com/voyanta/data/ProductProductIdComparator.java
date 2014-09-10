@@ -20,14 +20,18 @@ public class ProductProductIdComparator implements Comparator<Map>
 
     @Override
     public int compare(Map o1, Map o2) {
-        if(o1.get(key).hashCode()>o2.get(key).hashCode())
+            if(!(o1.containsKey(key)&&o2.containsKey(key)))
+                return 0;
+            if (o1.get(key).hashCode() > o2.get(key).hashCode())
 //            if(key1==null)
                 return 1;
 //            return 1;
-        else if(o1.get(key).hashCode()<o2.get(key).hashCode())
-            return -1;
-        else
-            return 0;
+            else if (o1.get(key).hashCode() < o2.get(key).hashCode())
+                return -1;
+            else
+                return 0;
+
+
     }
 }
 
