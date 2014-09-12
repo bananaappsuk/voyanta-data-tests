@@ -12,46 +12,46 @@ Feature: Checking the export functionality
   Examples:
 
     | ExpectedFile                                      | Entity                | primarykey              | secondarykey |
-#    | ACCOUNT-Account.xml                               | ACCOUNT               | AccountNumber           |              |
-#    | ACCOUNTACTIVITY-Account Activity.xml              | ACCOUNTACTIVITY       | TransactionReference    |              |
-#    | ACCOUNTSRECEIVABLE-Accounts Receivable.xml        | ACCOUNTSRECEIVABLE    | LeaseReference          |              |
-#    | ASSETFINANCIALSUMMARY-Asset Financial Summary.xml | ASSETFINANCIALSUMMARY | AssetReference          |              |
-#    | ASSETTRANSACTION-Asset Transaction.xml            | ASSETTRANSACTION      | AssetReference          |              |
-#    | ASSETVALUATION-Asset Valuation.xml                | ASSETVALUATION        | AssetReference          |              |
+    | ACCOUNT-Account.xml                               | ACCOUNT               | AccountNumber           |              |
+    | ACCOUNTACTIVITY-Account Activity.xml              | ACCOUNTACTIVITY       | TransactionReference    |              |
+    | ACCOUNTSRECEIVABLE-Accounts Receivable.xml        | ACCOUNTSRECEIVABLE    | LeaseReference          |              |
+    | ASSETFINANCIALSUMMARY-Asset Financial Summary.xml | ASSETFINANCIALSUMMARY | AssetReference          |              |
+    | ASSETTRANSACTION-Asset Transaction.xml            | ASSETTRANSACTION      | AssetReference          |              |
+    | ASSETVALUATION-Asset Valuation.xml                | ASSETVALUATION        | AssetReference          |              |
     | ASSUMPTION-Assumption.xml                         | ASSUMPTION            | TopLevelObjectReference |              |
-#    | ASSUMPTIONPROFILE-Assumption Profile.xml          | ASSUMPTIONPROFILE     | TopLevelObjectReference |              |
-#    | BUILDING-Asset.xml                                | BUILDING              | AssetReference          |              |
-#    | COVENANT-Covenant.xml                             | COVENANT              | DebtFacilityReference   |              |
-#    | COVENANTLIMIT-Covenant Limit.xml                  | COVENANTLIMIT         | DebtFacilityReference   |              |
-#    | COVENANTVALUE-Covenant Value.xml                  | COVENANTVALUE         | DebtFacilityReference   |              |
-#    | DEBTCOLLATERAL-Debt Collateral.xml                | DEBTCOLLATERAL        | DebtFacilityReference   |              |
-#    | DEBTFACILITY-Debt Facility.xml                    | DEBTFACILITY          | DebtFacilityReference   |              |
-#    | DEBTFACILITYEVENT-Debt Facility Event.xml         | DEBTFACILITYEVENT     | DebtFacilityReference   |              |
-#    | DEBTFACILITYSTATUS-Debt Facility Status.xml       | DEBTFACILITYSTATUS    | DebtFacilityReference   |              |
-#    | DEBTPARTICIPATION-Debt Participation.xml          | DEBTPARTICIPATION     | DebtFacilityReference   |              |
-#    | DEBTVALUATION-Debt Valuation.xml                  | DEBTVALUATION         | DebtFacilityReference   |              |
-#    | DEVELOPMENT-Development.xml                       | DEVELOPMENT           | AssetReference          |              |
-#    | EQUITYPARTICIPATION-Equity Participation.xml      | EQUITYPARTICIPATION   | InvestorReference       |              |
-#    | FARM-Farm.xml                                     | FARM                  | AssetReference          |              |
-#    | GROUNDLEASE-Ground Lease.xml                      | GROUNDLEASE           | GroundLeaseReference    |              |
-#    | INVESTMENT-Investment.xml                         | INVESTMENT            | LegalEntityReference    |              |
-#    | INVESTMENTLIMIT-Investment Limit.xml              | INVESTMENTLIMIT       | InvestmentReference     |              |
-#    | INVESTMENTVALUATION-Investment Valuation.xml      | INVESTMENTVALUATION   | InvestmentReference     |              |
-#    | LEASE-Lease.xml                                   | LEASE                 | LeaseReference          |              |
-#    | LEASEUNIT-Lease Unit.xml                          | LEASEUNIT             | AssetReference          |              |
-#    | LEGALENTITY-Legal Entity.xml                      | LEGALENTITY           | LegalEntityReference    |              |
-#    | LEGALENTITYVENDOR-Legal Entity Vendor.xml         | LEGALENTITYVENDOR     | LegalEntityReference    |              |
-#    | MARKETSTATISTICS-Market Statistics.xml            | MARKETSTATISTICS      | AsOfDate                |              |
-#    | OPTION-Option.xml                                 | OPTION                | LeaseUnitReference      |              |
-#    | RECOVERY-Recovery.xml                             | RECOVERY              | LeaseUnitReference      |              |
-#    | RECURRINGBILLING-Recurring Billing.xml            | RECURRINGBILLING      | AssetReference          |              |
-#    | RENTESCALATION-Rent Escalation.xml                | RENTESCALATION        | LeaseUnitReference      |              |
-#    | SALESBREAKPOINT-Sales Breakpoint.xml              | SALESBREAKPOINT       | LeaseUnitReference      |              |
-#    | SALES-Sales.xml                                   | SALES                 | LeaseUnitReference      |              |
-#    | TENANTALLOWANCE-Tenant Allowance.xml              | TENANTALLOWANCE       | LeaseUnitReference      |              |
-#    | TENANT-Legal Entity Tenant.xml                    | TENANT                | LegalEntityReference    |              |
-#    | UNIT-Unit.xml                                     | UNIT                  | BuildingReference       |              |
-#    | UNITVACANCYCOSTS-Unit Vacancy Cost.xml            | UNITVACANCYCOSTS      | AssetReference          |              |
+    | ASSUMPTIONPROFILE-Assumption Profile.xml          | ASSUMPTIONPROFILE     | TopLevelObjectReference |              |
+    | BUILDING-Asset.xml                                | BUILDING              | AssetReference          |              |
+    | COVENANT-Covenant.xml                             | COVENANT              | DebtFacilityReference   |              |
+    | COVENANTLIMIT-Covenant Limit.xml                  | COVENANTLIMIT         | DebtFacilityReference   |              |
+    | COVENANTVALUE-Covenant Value.xml                  | COVENANTVALUE         | DebtFacilityReference   |              |
+    | DEBTCOLLATERAL-Debt Collateral.xml                | DEBTCOLLATERAL        | DebtFacilityReference   |              |
+    | DEBTFACILITY-Debt Facility.xml                    | DEBTFACILITY          | DebtFacilityReference   |              |
+    | DEBTFACILITYEVENT-Debt Facility Event.xml         | DEBTFACILITYEVENT     | DebtFacilityReference   |              |
+    | DEBTFACILITYSTATUS-Debt Facility Status.xml       | DEBTFACILITYSTATUS    | DebtFacilityReference   |              |
+    | DEBTPARTICIPATION-Debt Participation.xml          | DEBTPARTICIPATION     | DebtFacilityReference   |              |
+    | DEBTVALUATION-Debt Valuation.xml                  | DEBTVALUATION         | DebtFacilityReference   |              |
+    | DEVELOPMENT-Development.xml                       | DEVELOPMENT           | AssetReference          |              |
+    | EQUITYPARTICIPATION-Equity Participation.xml      | EQUITYPARTICIPATION   | InvestorReference       |              |
+    | FARM-Farm.xml                                     | FARM                  | AssetReference          |              |
+    | GROUNDLEASE-Ground Lease.xml                      | GROUNDLEASE           | GroundLeaseReference    |              |
+    | INVESTMENT-Investment.xml                         | INVESTMENT            | LegalEntityReference    |              |
+    | INVESTMENTLIMIT-Investment Limit.xml              | INVESTMENTLIMIT       | InvestmentReference     |              |
+    | INVESTMENTVALUATION-Investment Valuation.xml      | INVESTMENTVALUATION   | InvestmentReference     |              |
+    | LEASE-Lease.xml                                   | LEASE                 | LeaseReference          |              |
+    | LEASEUNIT-Lease Unit.xml                          | LEASEUNIT             | AssetReference          |              |
+    | LEGALENTITY-Legal Entity.xml                      | LEGALENTITY           | LegalEntityReference    |              |
+    | LEGALENTITYVENDOR-Legal Entity Vendor.xml         | LEGALENTITYVENDOR     | LegalEntityReference    |              |
+    | MARKETSTATISTICS-Market Statistics.xml            | MARKETSTATISTICS      | AsOfDate                |              |
+    | OPTION-Option.xml                                 | OPTION                | LeaseUnitReference      |              |
+    | RECOVERY-Recovery.xml                             | RECOVERY              | LeaseUnitReference      |              |
+    | RECURRINGBILLING-Recurring Billing.xml            | RECURRINGBILLING      | AssetReference          |              |
+    | RENTESCALATION-Rent Escalation.xml                | RENTESCALATION        | LeaseUnitReference      |              |
+    | SALESBREAKPOINT-Sales Breakpoint.xml              | SALESBREAKPOINT       | LeaseUnitReference      |              |
+    | SALES-Sales.xml                                   | SALES                 | LeaseUnitReference      |              |
+    | TENANTALLOWANCE-Tenant Allowance.xml              | TENANTALLOWANCE       | LeaseUnitReference      |              |
+    | TENANT-Legal Entity Tenant.xml                    | TENANT                | LegalEntityReference    |              |
+    | UNIT-Unit.xml                                     | UNIT                  | BuildingReference       |              |
+    | UNITVACANCYCOSTS-Unit Vacancy Cost.xml            | UNITVACANCYCOSTS      | AssetReference          |              |
 
   @Taliance
   Scenario Outline: Taliance Export Test
@@ -64,7 +64,7 @@ Feature: Checking the export functionality
 
   Examples:
 
-  
+
 
 
 
