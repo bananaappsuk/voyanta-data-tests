@@ -42,13 +42,13 @@ Feature: Checking the export functionality
     | LEGALENTITY-Legal Entity.xml                      | LEGALENTITY           | LegalEntityReference    |              |
     | LEGALENTITYVENDOR-Legal Entity Vendor.xml         | LEGALENTITYVENDOR     | LegalEntityReference    |              |
     | MARKETSTATISTICS-Market Statistics.xml            | MARKETSTATISTICS      | AsOfDate                |              |
-    | OPTION-Option.xml                                 | OPTION                | LeaseUnitReference      |              |
-    | RECOVERY-Recovery.xml                             | RECOVERY              | LeaseUnitReference      |              |
+    | OPTION-Option.xml                                 | OPTION                | AssetReference      |              |
+    | RECOVERY-Recovery.xml                             | RECOVERY              | AssetReference      |              |
     | RECURRINGBILLING-Recurring Billing.xml            | RECURRINGBILLING      | AssetReference          |              |
-    | RENTESCALATION-Rent Escalation.xml                | RENTESCALATION        | LeaseUnitReference      |              |
-    | SALESBREAKPOINT-Sales Breakpoint.xml              | SALESBREAKPOINT       | LeaseUnitReference      |              |
-    | SALES-Sales.xml                                   | SALES                 | LeaseUnitReference      |              |
-    | TENANTALLOWANCE-Tenant Allowance.xml              | TENANTALLOWANCE       | LeaseUnitReference      |              |
+    | RENTESCALATION-Rent Escalation.xml                | RENTESCALATION        | AssetReference      |              |
+    | SALESBREAKPOINT-Sales Breakpoint.xml              | SALESBREAKPOINT       | LeaseReference      |              |
+    | SALES-Sales.xml                                   | SALES                 | LeaseReference      |              |
+    | TENANTALLOWANCE-Tenant Allowance.xml              | TENANTALLOWANCE       | AssetReference      |              |
     | TENANT-Legal Entity Tenant.xml                    | TENANT                | LegalEntityReference    |              |
     | UNIT-Unit.xml                                     | UNIT                  | BuildingReference       |              |
     | UNITVACANCYCOSTS-Unit Vacancy Cost.xml            | UNITVACANCYCOSTS      | AssetReference          |              |
