@@ -196,6 +196,25 @@ public class DataModelSteps {
         a_file_with_name_Actual_File_folder(file);
     }
 
+    @Given("^comparing between actual and expected XML files should be equal with name '(.*)'$")
+    public void compare_XMLs(String fileName)
+    {
+        if(System.getProperty("os.name").toLowerCase().contains("mac"))
+        {
+                exportExpectedFolder=System.getProperty("user.home")+PropertiesLoader.getProperty("mac_augus_exp");
+                exportActualFolder =System.getProperty("user.home")+PropertiesLoader.getProperty("mac_augus_act");
+        }
+        else
+        {
+                exportExpectedFolder=System.getProperty("user.home")+PropertiesLoader.getProperty("win_augus_exp");
+                exportActualFolder =System.getProperty("user.home")+PropertiesLoader.getProperty("win_augus_act");
+       }
+
+        ValidationUtils.compareXML(exportExpectedFolder+"//"+fileName,exportActualFolder+"//"+fileName);
+
+
+    }
+
 
 
     @Given("^data is loaded with entity name '(.*)' with primary key '(.*)' and '(.*)'$")

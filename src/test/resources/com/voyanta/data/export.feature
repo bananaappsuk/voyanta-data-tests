@@ -92,3 +92,15 @@ Feature: Checking the export functionality
     | _UNITMKTVALUE_-Unit.xml                   | UNITMKTVALUE       | IDUNIT     | DSYS1, DMKTVALUE  |                        |
     | _UNITOCC_-Unit.xml                        | UNITOCC            | IDUNIT     | DSYS1             |                        |
 #    | _WKBUDGET_-Account Activity.xml           | WKBUDGET           | IDPROPERTY | DSYS1             |                        |
+
+
+  @augus
+  Scenario Outline: Compare augus master export with current export
+
+    Then comparing between actual and expected XML files should be equal with name '<ExpectedFile>'
+
+    Examples:
+      | ExpectedFile                              | Entity             | primarykey | currentDateColumn | secondarykey           |
+    | Voyanta_AEIX-Asset.xml         | ACCOUNTING         | IDENTITY   | DSYS1             |                        |
+
+

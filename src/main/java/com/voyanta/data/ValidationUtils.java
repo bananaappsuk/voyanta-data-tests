@@ -1,9 +1,12 @@
 package com.voyanta.data;
 
 import com.voyanta.data.utils.VHashMap;
+import com.voyanta.data.utils.XMLCompareUtils;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -481,5 +484,16 @@ public class ValidationUtils {
 
         return failures;
 
+    }
+
+    public static void compareXML(String exportExpectedFolder, String exportActualFolder) {
+       XMLCompareUtils xmlCompareUtils = new XMLCompareUtils("test");
+        try {
+            File file1 = new File(exportExpectedFolder);
+            File file2 = new File(exportActualFolder);
+           xmlCompareUtils.testAllDifferences(FileUtils.readFileToString(file1, "UTF-8"),FileUtils.readFileToString(file2, "UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
